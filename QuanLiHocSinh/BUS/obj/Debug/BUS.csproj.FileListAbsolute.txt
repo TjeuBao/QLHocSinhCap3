@@ -1,0 +1,5 @@
+E:\LTCSDL\QLHocSinhCap3\QuanLiHocSinh\BIN\BUS.dll
+E:\LTCSDL\QLHocSinhCap3\QuanLiHocSinh\BIN\BUS.pdb
+E:\LTCSDL\QLHocSinhCap3\QuanLiHocSinh\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
+E:\LTCSDL\QLHocSinhCap3\QuanLiHocSinh\BUS\obj\Debug\BUS.dll
+E:\LTCSDL\QLHocSinhCap3\QuanLiHocSinh\BUS\obj\Debug\BUS.pdb

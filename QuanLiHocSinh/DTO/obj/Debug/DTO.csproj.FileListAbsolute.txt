@@ -1,0 +1,4 @@
+E:\LTCSDL\QLHocSinhCap3\QuanLiHocSinh\BIN\DTO.dll
+E:\LTCSDL\QLHocSinhCap3\QuanLiHocSinh\BIN\DTO.pdb
+E:\LTCSDL\QLHocSinhCap3\QuanLiHocSinh\DTO\obj\Debug\DTO.dll
+E:\LTCSDL\QLHocSinhCap3\QuanLiHocSinh\DTO\obj\Debug\DTO.pdb

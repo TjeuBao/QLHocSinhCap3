@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DTO
+{
+    public class Lop
+    {
+        public int MaLop { get; set; }
+        public string TenLop { get; set; }
+        public int SiSo { get; set; }
+        public int NamHoc { get; set; }
+        public int MaKhoi { get; set; }
+//<<<<<<< HEAD
+        public List<HocSinh> hs { get; set; }
+
+//=======
+        public string TenKhoi { get; set; }
+//>>>>>>> origin/dev
+        public Lop(){}
+        public Lop(int maLop, string tenLop, int siSo, int namHoc, int maKhoi)
+        {
+            MaLop = maLop;
+            TenLop = tenLop;
+            SiSo = siSo;
+            NamHoc = namHoc;
+            MaKhoi = maKhoi;
+        }
+        public Lop(int maLop, string tenLop, int siSo, int namHoc, string tenkhoi)
+        {
+            MaLop = maLop;
+            TenLop = tenLop;
+            SiSo = siSo;
+            NamHoc = namHoc;
+            TenKhoi = tenkhoi;
+        }
+    }
+}

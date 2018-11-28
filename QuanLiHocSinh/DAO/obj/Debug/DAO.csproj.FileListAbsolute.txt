@@ -1,0 +1,5 @@
+E:\LTCSDL\QLHocSinhCap3\QuanLiHocSinh\BIN\DAO.dll
+E:\LTCSDL\QLHocSinhCap3\QuanLiHocSinh\BIN\DAO.pdb
+E:\LTCSDL\QLHocSinhCap3\QuanLiHocSinh\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
+E:\LTCSDL\QLHocSinhCap3\QuanLiHocSinh\DAO\obj\Debug\DAO.dll
+E:\LTCSDL\QLHocSinhCap3\QuanLiHocSinh\DAO\obj\Debug\DAO.pdb
