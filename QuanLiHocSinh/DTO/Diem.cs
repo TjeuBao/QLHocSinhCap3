@@ -15,14 +15,15 @@ namespace DTO
     }
     public class DiemMonHoc
     {
+        public string MaHocKi { get; set; }
         public int MaDiemMon { get; set; }
         public int MaLop { get; set; }
         public int MaHS { get; set; }
         public string TenHS { get; set; }
         public int MaMonHoc { get; set; }
-        public int Diem { get; set; }
+        public float Diem { get; set; }
         public int LoaiKiemTra { get; set; }
-        public int DTB { get; set; }
+        public float DTB { get; set; }
         public DiemMonHoc() { }
     }
     public class DienMonHocLop

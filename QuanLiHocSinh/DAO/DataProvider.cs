@@ -162,7 +162,6 @@ namespace DAO
             }
             finally
             {
-                DisConnect();
             }
         }
         //tra ve bang 

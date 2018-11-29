@@ -30,9 +30,6 @@
         {
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgrDiem = new System.Windows.Forms.DataGridView();
-            this.TenHS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LoaiKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Diem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
@@ -47,6 +44,7 @@
             this.txtHS = new System.Windows.Forms.TextBox();
             this.txtLop = new System.Windows.Forms.TextBox();
             this.txtMon = new System.Windows.Forms.TextBox();
+            this.LoaiKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrDiem)).BeginInit();
             this.panel1.SuspendLayout();
@@ -64,33 +62,11 @@
             // dgrDiem
             // 
             this.dgrDiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgrDiem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TenHS,
-            this.LoaiKiemTra,
-            this.Diem});
             this.dgrDiem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrDiem.Location = new System.Drawing.Point(0, 0);
             this.dgrDiem.Name = "dgrDiem";
             this.dgrDiem.Size = new System.Drawing.Size(800, 264);
             this.dgrDiem.TabIndex = 6;
-            // 
-            // TenHS
-            // 
-            this.TenHS.HeaderText = "Tên";
-            this.TenHS.Name = "TenHS";
-            this.TenHS.ReadOnly = true;
-            // 
-            // LoaiKiemTra
-            // 
-            this.LoaiKiemTra.HeaderText = "Loại Kiểm Tra";
-            this.LoaiKiemTra.Name = "LoaiKiemTra";
-            this.LoaiKiemTra.ReadOnly = true;
-            // 
-            // Diem
-            // 
-            this.Diem.HeaderText = "Điểm";
-            this.Diem.Name = "Diem";
-            this.Diem.ReadOnly = true;
             // 
             // btnXoa
             // 
@@ -118,6 +94,7 @@
             this.btnThem.TabIndex = 11;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click_1);
             // 
             // txtDiem
             // 
@@ -201,9 +178,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(59, 88);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 24);
+            this.label4.Size = new System.Drawing.Size(115, 24);
             this.label4.TabIndex = 7;
-            this.label4.Text = "LoaiKiemTra";
+            this.label4.Text = "Loại kiểm tra";
             // 
             // txtHS
             // 
@@ -226,6 +203,12 @@
             this.txtMon.Size = new System.Drawing.Size(95, 20);
             this.txtMon.TabIndex = 5;
             // 
+            // LoaiKiemTra
+            // 
+            this.LoaiKiemTra.HeaderText = "Loại Kiểm Tra";
+            this.LoaiKiemTra.Name = "LoaiKiemTra";
+            this.LoaiKiemTra.ReadOnly = true;
+            // 
             // frmDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,9 +230,6 @@
 
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dgrDiem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenHS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LoaiKiemTra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Diem;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
@@ -264,5 +244,6 @@
         private System.Windows.Forms.TextBox txtHS;
         private System.Windows.Forms.TextBox txtLop;
         private System.Windows.Forms.TextBox txtMon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoaiKiemTra;
     }
 }

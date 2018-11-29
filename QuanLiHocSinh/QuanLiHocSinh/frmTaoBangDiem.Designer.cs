@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnTim = new System.Windows.Forms.Button();
             this.cbKhoaHoc = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
@@ -50,7 +51,6 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnTim = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.drgNhapDiem)).BeginInit();
@@ -77,6 +77,20 @@
             this.panel2.Size = new System.Drawing.Size(753, 211);
             this.panel2.TabIndex = 0;
             // 
+            // btnTim
+            // 
+            this.btnTim.BackColor = System.Drawing.Color.Transparent;
+            this.btnTim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTim.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTim.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTim.Location = new System.Drawing.Point(503, 168);
+            this.btnTim.Name = "btnTim";
+            this.btnTim.Size = new System.Drawing.Size(93, 29);
+            this.btnTim.TabIndex = 59;
+            this.btnTim.Text = "Tìm kiếm";
+            this.btnTim.UseVisualStyleBackColor = false;
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
+            // 
             // cbKhoaHoc
             // 
             this.cbKhoaHoc.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -92,6 +106,7 @@
             this.cbKhoaHoc.Name = "cbKhoaHoc";
             this.cbKhoaHoc.Size = new System.Drawing.Size(121, 24);
             this.cbKhoaHoc.TabIndex = 56;
+            this.cbKhoaHoc.SelectedIndexChanged += new System.EventHandler(this.cbKhoaHoc_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -178,6 +193,7 @@
             this.cbLop.Name = "cbLop";
             this.cbLop.Size = new System.Drawing.Size(121, 24);
             this.cbLop.TabIndex = 2;
+            this.cbLop.SelectedIndexChanged += new System.EventHandler(this.cbLop_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -197,6 +213,7 @@
             this.cbKhoi.Name = "cbKhoi";
             this.cbKhoi.Size = new System.Drawing.Size(121, 24);
             this.cbKhoi.TabIndex = 1;
+            this.cbKhoi.SelectedIndexChanged += new System.EventHandler(this.cbKhoi_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -241,10 +258,12 @@
             this.drgNhapDiem.ReadOnly = true;
             this.drgNhapDiem.Size = new System.Drawing.Size(733, 277);
             this.drgNhapDiem.TabIndex = 0;
+            this.drgNhapDiem.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.drgNhapDiem_CellClick);
+            this.drgNhapDiem.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.drgNhapDiem_CellContentDoubleClick);
             // 
             // Column5
             // 
-            this.Column5.DataPropertyName = "MaSoHS";
+            this.Column5.DataPropertyName = "MaHS";
             this.Column5.HeaderText = "Mã HS";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
@@ -253,12 +272,14 @@
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "TenHS";
             this.Column1.HeaderText = "Họ Tên";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
             // Column7
             // 
+            this.Column7.DataPropertyName = "DiemMieng";
             this.Column7.HeaderText = "Miệng";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
@@ -266,6 +287,7 @@
             // 
             // Column2
             // 
+            this.Column2.DataPropertyName = "Phut";
             this.Column2.HeaderText = "15 phút";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -273,6 +295,7 @@
             // 
             // Column3
             // 
+            this.Column3.DataPropertyName = "Tiet";
             this.Column3.HeaderText = "1 tiết";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -280,6 +303,7 @@
             // 
             // Column4
             // 
+            this.Column4.DataPropertyName = "CuoiKi";
             this.Column4.HeaderText = "Cuối kì";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
@@ -287,22 +311,10 @@
             // 
             // Column6
             // 
+            this.Column6.DataPropertyName = "DTB";
             this.Column6.HeaderText = "Trung Bình Môn";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
-            // 
-            // btnTim
-            // 
-            this.btnTim.BackColor = System.Drawing.Color.Transparent;
-            this.btnTim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTim.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTim.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTim.Location = new System.Drawing.Point(503, 168);
-            this.btnTim.Name = "btnTim";
-            this.btnTim.Size = new System.Drawing.Size(93, 29);
-            this.btnTim.TabIndex = 59;
-            this.btnTim.Text = "Tìm kiếm";
-            this.btnTim.UseVisualStyleBackColor = false;
             // 
             // frmTaoBangDiem
             // 
@@ -341,6 +353,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ComboBox cbKhoaHoc;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnTim;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
@@ -348,6 +361,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.Button btnTim;
     }
 }

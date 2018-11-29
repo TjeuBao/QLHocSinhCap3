@@ -26,11 +26,12 @@ namespace DAO
                     diemmonhoc.MaDiemMon = d.GetInt32(0);
                     diemmonhoc.MaMonHoc = d.GetInt32(1);
                     diemmonhoc.MaHS = d.GetInt32(2);
-                    diemmonhoc.DTB = d.GetInt32(4);
                     diemmonhoc.MaLop = d.GetInt32(3);
-                    diemmonhoc.LoaiKiemTra = d.GetInt32(5);
-                    diemmonhoc.Diem = d.GetInt32(6);
-                    diemmonhoc.TenHS = d.GetString(7);
+                    diemmonhoc.DTB =  d.GetFloat(4);
+                    diemmonhoc.MaHocKi = d.GetString(5);
+                    diemmonhoc.LoaiKiemTra = d.GetInt32(6);
+                    diemmonhoc.Diem = d.GetFloat(7);
+                    diemmonhoc.TenHS = d.GetString(8);
                     list.Add(diemmonhoc);
                 }
                 return list;
