@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Khối 10");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Khối 11");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Khối 12");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Danh Sách Lớp", new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode14,
-            treeNode15});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Khối 10");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Khối 11");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Khối 12");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Danh Sách Lớp", new System.Windows.Forms.TreeNode[] {
+            treeNode9,
+            treeNode10,
+            treeNode11});
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtNS = new System.Windows.Forms.DateTimePicker();
@@ -81,7 +81,6 @@
             this.côngCụToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nhậpBảngĐiểmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lậpBáoCáoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thayĐổiQuyĐịnhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inDanhSáchLớpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -474,16 +473,16 @@
             this.tvDanhSachLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tvDanhSachLop.Location = new System.Drawing.Point(-1, 128);
             this.tvDanhSachLop.Name = "tvDanhSachLop";
-            treeNode13.Name = "Node0";
-            treeNode13.Text = "Khối 10";
-            treeNode14.Name = "Node1";
-            treeNode14.Text = "Khối 11";
-            treeNode15.Name = "Node2";
-            treeNode15.Text = "Khối 12";
-            treeNode16.Name = "Node0";
-            treeNode16.Text = "Danh Sách Lớp";
+            treeNode9.Name = "Node0";
+            treeNode9.Text = "Khối 10";
+            treeNode10.Name = "Node1";
+            treeNode10.Text = "Khối 11";
+            treeNode11.Name = "Node2";
+            treeNode11.Text = "Khối 12";
+            treeNode12.Name = "Node0";
+            treeNode12.Text = "Danh Sách Lớp";
             this.tvDanhSachLop.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode16});
+            treeNode12});
             this.tvDanhSachLop.Size = new System.Drawing.Size(186, 444);
             this.tvDanhSachLop.TabIndex = 0;
             this.tvDanhSachLop.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvDanhSachLop_NodeMouseClick);
@@ -573,7 +572,6 @@
             this.côngCụToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nhậpBảngĐiểmToolStripMenuItem,
             this.lậpBáoCáoToolStripMenuItem,
-            this.thayĐổiQuyĐịnhToolStripMenuItem,
             this.inDanhSáchLớpToolStripMenuItem1});
             this.côngCụToolStripMenuItem.Name = "côngCụToolStripMenuItem";
             this.côngCụToolStripMenuItem.Size = new System.Drawing.Size(82, 25);
@@ -583,7 +581,7 @@
             // 
             this.nhậpBảngĐiểmToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nhậpBảngĐiểmToolStripMenuItem.Name = "nhậpBảngĐiểmToolStripMenuItem";
-            this.nhậpBảngĐiểmToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.nhậpBảngĐiểmToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.nhậpBảngĐiểmToolStripMenuItem.Text = "Nhập Bảng Điểm";
             this.nhậpBảngĐiểmToolStripMenuItem.Click += new System.EventHandler(this.nhậpBảngĐiểmToolStripMenuItem_Click);
             // 
@@ -591,23 +589,15 @@
             // 
             this.lậpBáoCáoToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lậpBáoCáoToolStripMenuItem.Name = "lậpBáoCáoToolStripMenuItem";
-            this.lậpBáoCáoToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.lậpBáoCáoToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.lậpBáoCáoToolStripMenuItem.Text = "In Bảng Điểm";
             this.lậpBáoCáoToolStripMenuItem.Click += new System.EventHandler(this.lậpBáoCáoToolStripMenuItem_Click);
-            // 
-            // thayĐổiQuyĐịnhToolStripMenuItem
-            // 
-            this.thayĐổiQuyĐịnhToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.thayĐổiQuyĐịnhToolStripMenuItem.Name = "thayĐổiQuyĐịnhToolStripMenuItem";
-            this.thayĐổiQuyĐịnhToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.thayĐổiQuyĐịnhToolStripMenuItem.Text = "Tạo Danh Sách Lớp";
-            this.thayĐổiQuyĐịnhToolStripMenuItem.Click += new System.EventHandler(this.thayĐổiQuyĐịnhToolStripMenuItem_Click);
             // 
             // inDanhSáchLớpToolStripMenuItem1
             // 
             this.inDanhSáchLớpToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inDanhSáchLớpToolStripMenuItem1.Name = "inDanhSáchLớpToolStripMenuItem1";
-            this.inDanhSáchLớpToolStripMenuItem1.Size = new System.Drawing.Size(191, 22);
+            this.inDanhSáchLớpToolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
             this.inDanhSáchLớpToolStripMenuItem1.Text = "In Danh Sách Lớp";
             this.inDanhSáchLớpToolStripMenuItem1.Click += new System.EventHandler(this.inDanhSáchLớpToolStripMenuItem1_Click);
             // 
@@ -693,7 +683,6 @@
         private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem nhậpBảngĐiểmToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lậpBáoCáoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem thayĐổiQuyĐịnhToolStripMenuItem;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TreeView tvDanhSachLop;

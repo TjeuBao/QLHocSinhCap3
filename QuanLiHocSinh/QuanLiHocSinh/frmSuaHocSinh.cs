@@ -34,11 +34,11 @@ namespace QuanLiHocSinh
             txtSDT.Text = hs.SDT;
             txtEmail.Text = hs.Email.ToString();            
             cbTinhTrang.Text = hs.TinhTrang ? "Đang học" : "Thôi học";
-            var lophientai = lop.First(x => x.MaLop == hs.LopHienTai);
-            cbLop.SelectedValue = lophientai.TenLop;
-
-            getcbKhoi(lophientai.TenKhoi, cbKhoaHoc.SelectedItem.ToString(), "");
-            getcbLop(lophientai.TenKhoi, cbKhoaHoc.SelectedItem.ToString(), lophientai.TenLop);
+            
+            cbLop.SelectedValue = hs.TenLop.ToString();
+            //var lophientai = lop.First(x => x.MaLop == hs.LopHienTai);
+            //getcbKhoi(lophientai.TenKhoi, cbKhoaHoc.SelectedItem.ToString(), "");
+            //getcbLop(lophientai.TenKhoi, cbKhoaHoc.SelectedItem.ToString(), lophientai.TenLop);
         }
         private void InitCombobox()
         {

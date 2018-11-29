@@ -25,36 +25,24 @@ namespace QuanLiHocSinh
         {
             InitializeComponent();
             nienKhoaBUS = new NienKhoaBUS();
-        }
-        public frmXuatDanhSachLop(Lop l)
-        {
-            InitializeComponent();
-            lop = l;
-            var khoi = khoiBUS.GetTatCaKhoi();
-            cbKhoi.DataSource = khoi.Select(x => new { Id = x.MaKhoi, Ten = x.TenKhoi }).ToList();
-            cbKhoi.DisplayMember = "Ten";
-            cbKhoi.ValueMember = "Id";
-            cbKhoi.SelectedText = lop.TenKhoi;
-            cbLop.Text = lop.TenLop;
-            cbKhoaHoc.Text = lop.IdKhoaHoc.ToString();
-            cbKhoi.Text = lop.TenKhoi;
-
-            
+            cbKhoaHoc.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbKhoi.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbLop.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void btReport_Click(object sender, EventArgs e)
         {
             DataSet ds;
             List<SqlParameter> paras = new List<SqlParameter>();
-            paras.Add(new SqlParameter("@malop",cbLop.SelectedValue));
+            paras.Add(new SqlParameter("@malop", cbLop.SelectedValue));
             ds = bcbus.TaoDanhSachHocSinh(paras);
             repBaoCao.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
             repBaoCao.LocalReport.ReportPath = "DanhSachHocSinh.rdlc";
+            ReportDataSource rds = new ReportDataSource();
+            rds.Name = "dsHocSinhTheoLop";
+            rds.Value = ds.Tables[0];
             if (ds.Tables[0].Rows.Count > 0)
-            {
-                ReportDataSource rds = new ReportDataSource();
-                rds.Name = "dsHocSinhTheoLop";
-                rds.Value = ds.Tables[0];
+            {               
                 repBaoCao.LocalReport.DataSources.Clear();
                 repBaoCao.LocalReport.DataSources.Add(rds);
                 repBaoCao.RefreshReport();
@@ -76,7 +64,7 @@ namespace QuanLiHocSinh
             cbKhoaHoc.DataSource = dt;
             cbKhoaHoc.DisplayMember = "NamHoc";
             cbKhoaHoc.ValueMember = "IdKhoaHoc";
-            //cbKhoaHoc.SelectedValue = 5;
+            cbKhoaHoc.SelectedValue = 5;
 
             DataTable dtkhoi;
 
@@ -84,7 +72,9 @@ namespace QuanLiHocSinh
             cbKhoi.DataSource = dtkhoi;
             cbKhoi.DisplayMember = "TenKhoi";
             cbKhoi.ValueMember = "MaKhoi";
+
             cbKhoi.SelectedValue = 1;
+
             dtLop = LoadClassByGrade("1");
             cbLop.DataSource = dtLop;
             cbLop.ValueMember = "MaLop";
@@ -94,7 +84,7 @@ namespace QuanLiHocSinh
         private void cbKhoi_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataTable dtLop;
-            
+
             if (cbKhoi.SelectedValue.ToString() == "1")
             {
                 dtLop = LoadClassByGrade("1");
@@ -127,7 +117,6 @@ namespace QuanLiHocSinh
         private void cbKhoaHoc_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataTable dtLop;
-            //var test = cbKhoi.SelectedValue.ToString();
             cbKhoi.SelectedValue = 1;
             dtLop = LoadClassByGrade("1");
             if (dtLop.Rows.Count > 0)

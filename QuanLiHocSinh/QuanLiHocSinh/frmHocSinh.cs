@@ -70,34 +70,8 @@ namespace QuanLiHocSinh
             cbKhoi.DisplayMember = "Ten";
         }
 
-        //public List<HocSinh> getStudents()
-        //{
-        //    try
-        //    {
-        //        var hocSinhs = hsbus.getStudents();
-        //        hocSinhs.ForEach(x =>
-        //        {
-        //            x.TinhTrangText = x.TinhTrang ? "Đang học" : "Thôi học";
-        //            x.Lop = lop.First(i => i.MaLop == x.LopHienTai).TenLop;
-        //        });
-
-        //        //foreach (var x in hocSinhs)
-        //        //{
-        //        //    x.TinhTrangText = x.TinhTrang ? "Đang học" : "Thôi học";
-        //        //    x.Lop = lop.First(i => i.MaLop == x.LopHienTai).TenLop;
-        //        //}
-
-        //        return hocSinhs;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //        return null;
-        //    }
-        //}
-
         private void btnAdd_Click(object sender, EventArgs e)
-        {           
+        {
             frmThemHocSinh frm = new frmThemHocSinh();
             frm.ShowDialog();
         }
@@ -116,7 +90,7 @@ namespace QuanLiHocSinh
                     SDT = txtSDT.Text.ToString(),
                     Email = txtEmail.Text.ToString(),
                     TinhTrang = int.Parse(cbTinhTrang.SelectedValue.ToString()) != (int)TinhTrang.DangHoc,
-                    LopHienTai = Int32.Parse(cbLop.SelectedValue.ToString())                    
+                    LopHienTai = Int32.Parse(cbLop.SelectedValue.ToString())
                 };
                 frmSuaHocSinh frm = new frmSuaHocSinh(hs);
                 frm.ShowDialog();
@@ -180,13 +154,13 @@ namespace QuanLiHocSinh
                 txtDiaChi.Text = drgHocSinh.Rows[numrow].Cells[4].Value.ToString();
                 txtSDT.Text = drgHocSinh.Rows[numrow].Cells[5].Value.ToString();
                 txtEmail.Text = drgHocSinh.Rows[numrow].Cells[6].Value.ToString();
-                //cbKhoaHoc.Text = drgHocSinh.Rows[numrow].Cells[7].Value.ToString();
+                cbLop.Text = drgHocSinh.Rows[numrow].Cells[10].Value.ToString();
                 cbTinhTrang.Text = drgHocSinh.Rows[numrow].Cells[8].Value.ToString();
 
-                var lophientai = lop.First(x => x.MaLop == int.Parse(drgHocSinh.Rows[numrow].Cells[11].Value.ToString()));
-                cbLop.Text = lophientai.TenLop;
-                getcbKhoi(lophientai.TenKhoi, cbKhoaHoc.SelectedItem.ToString(), "");
-                getcbLop(lophientai.TenKhoi, cbKhoaHoc.SelectedItem.ToString(), lophientai.TenLop);
+                //var lophientai = lop.First(x => x.MaLop == int.Parse(drgHocSinh.Rows[numrow].Cells[11].Value.ToString()));
+                //cbLop.Text = lophientai.TenLop;
+                //getcbKhoi(lophientai.TenKhoi, cbKhoaHoc.SelectedItem.ToString(), "");
+                //getcbLop(lophientai.TenKhoi, cbKhoaHoc.SelectedItem.ToString(), lophientai.TenLop);
             }
             catch (Exception)
             {

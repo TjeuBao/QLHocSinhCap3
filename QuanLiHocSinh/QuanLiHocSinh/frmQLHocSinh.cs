@@ -29,6 +29,7 @@ namespace QuanLiHocSinh
             nienKhoaBUS = new NienKhoaBUS();
             lopBUS = new LopBUS();
             lop = lopBUS.getLop();
+            
         }
 
         private void frmQLHocSinh_Load(object sender, EventArgs e)
@@ -43,16 +44,17 @@ namespace QuanLiHocSinh
             }
 
             cbKhoaHoc.DropDownStyle = ComboBoxStyle.DropDownList;
-
+            
             DataTable dt;
 
             dt = nienKhoaBUS.GetTables("KhoaHoc");
             cbKhoaHoc.DataSource = dt;
             cbKhoaHoc.DisplayMember = "NamHoc";
             cbKhoaHoc.ValueMember = "IdKhoaHoc";
-
+            
             // Load lớp theo khối
             LoadClassByGrade();
+            cbKhoaHoc.SelectedValue = 5;
         }
 
         private void frmQLHocSinh_FormClosing(object sender, FormClosingEventArgs e)
@@ -181,11 +183,6 @@ namespace QuanLiHocSinh
             frm.ShowDialog();
         }
 
-        private void thayĐổiQuyĐịnhToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmTaoDanhSachLop frm = new frmTaoDanhSachLop();
-            frm.ShowDialog();
-        }
 
         private void timKiếmToolStripMenuItem_Click(object sender, EventArgs e)
         {
