@@ -29,14 +29,13 @@ namespace QuanLiHocSinh
         {
             int maHS = 1; int lopHienTai;
             DateTime ngaySinh;
-            string hoTen, gioiTinh, diaChi, sdt, email, nienKhoa, tenLop;
+            string hoTen, gioiTinh, diaChi, sdt, email, tenLop;
             bool tinhTrang;
             hoTen = txtHoTen.Text.Trim();
             gioiTinh = cbGT.Text.Trim();
             sdt = txtSDT.Text.Trim();
             ngaySinh = txtNS.Value;
             diaChi = txtDiaChi.Text.Trim();
-            //nienKhoa = cbKhoaHoc.SelectedItem.ToString();
             email = txtEmail.Text.Trim();
             tinhTrang = int.Parse(cbTinhTrang.SelectedValue.ToString()) != (int)TinhTrang.DangHoc;
             lopHienTai = int.Parse(cbLop.SelectedValue.ToString());

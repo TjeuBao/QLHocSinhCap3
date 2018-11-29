@@ -32,9 +32,9 @@ namespace QuanLiHocSinh
             try
             {
                 var tenLop = txtTenLop.Text;
-                var idKhoaHoc = init.khoaHoc[cbKhoaHoc.SelectedIndex].NamHoc;
+                var idKhoaHoc = init.khoaHoc[cbKhoaHoc.SelectedIndex].IdKhoaHoc;
                 var maKhoi = Convert.ToInt32(cbKhoi.SelectedValue);
-                if (init.lop.Where(x => x.TenLop.Contains(tenLop) && x.TenKhoi.Contains(init.khoi.First(i=>i.MaKhoi==maKhoi).TenKhoi) && x.IdKhoaHoc == idKhoaHoc).Count() > 0)
+                if (init.lop.Where(x => x.TenLop.Contains(tenLop) && x.TenKhoi.Contains(init.khoi.First(i => i.MaKhoi == maKhoi).TenKhoi) && x.IdKhoaHoc == idKhoaHoc).Count() > 0)
                 {
                     MessageBox.Show("Đã có lớp này");
                     return;

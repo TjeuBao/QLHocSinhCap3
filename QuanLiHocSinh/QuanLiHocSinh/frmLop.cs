@@ -48,9 +48,9 @@ namespace QuanLiHocSinh
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmThemLop frm = new frmThemLop();
-            
+
             frm.ShowDialog();
-            if(frm.IsDisposed)
+            if (frm.IsDisposed)
             {
                 dgrLopHoc.DataSource = getLop();
             }
@@ -65,7 +65,7 @@ namespace QuanLiHocSinh
                     MaLop = int.Parse(txtMaLop.Text.ToString()),
                     TenLop = txtTenLop.Text,
                     IdKhoaHoc = int.Parse(txtKhoaHoc.Text.ToString()),
-                    TenKhoi= txtKhoi,
+                    TenKhoi = txtKhoi,
                 };
                 frmSuaLop frm = new frmSuaLop(lop);
                 dgrLopHoc.DataSource = getLop();
@@ -128,7 +128,7 @@ namespace QuanLiHocSinh
                 txtKhoaHoc.Text = dgrLopHoc.Rows[e.RowIndex].Cells[3].Value.ToString();
                 txtKhoi = dgrLopHoc.Rows[e.RowIndex].Cells[5].Value.ToString();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return;
             }

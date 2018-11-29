@@ -32,27 +32,34 @@ namespace QuanLiHocSinh
 
         private void btReport_Click(object sender, EventArgs e)
         {
-            DataSet ds;
-            List<SqlParameter> paras = new List<SqlParameter>();
-            paras.Add(new SqlParameter("@malop", cbLop.SelectedValue));
-            ds = bcbus.TaoDanhSachHocSinh(paras);
-            repBaoCao.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
-            repBaoCao.LocalReport.ReportPath = "DanhSachHocSinh.rdlc";
-            ReportDataSource rds = new ReportDataSource();
-            rds.Name = "dsHocSinhTheoLop";
-            rds.Value = ds.Tables[0];
-            if (ds.Tables[0].Rows.Count > 0)
-            {               
-                repBaoCao.LocalReport.DataSources.Clear();
-                repBaoCao.LocalReport.DataSources.Add(rds);
-                repBaoCao.RefreshReport();
-            }
-            else
+            try
             {
-                repBaoCao.LocalReport.DataSources.Clear();
-                repBaoCao.RefreshReport();
-                MessageBox.Show("Không có học sinh");
-                return;
+                DataSet ds;
+                List<SqlParameter> paras = new List<SqlParameter>();
+                paras.Add(new SqlParameter("@malop", cbLop.SelectedValue));
+                ds = bcbus.TaoDanhSachHocSinh(paras);
+                repBaoCao.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
+                repBaoCao.LocalReport.ReportPath = "DanhSachHocSinh.rdlc";
+                ReportDataSource rds = new ReportDataSource();
+                rds.Name = "dsHocSinhTheoLop";
+                rds.Value = ds.Tables[0];
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    repBaoCao.LocalReport.DataSources.Clear();
+                    repBaoCao.LocalReport.DataSources.Add(rds);
+                    repBaoCao.RefreshReport();
+                }
+                else
+                {
+                    repBaoCao.LocalReport.DataSources.Clear();
+                    repBaoCao.RefreshReport();
+                    MessageBox.Show("Không có học sinh");
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Chưa chọn lớp");
             }
         }
 

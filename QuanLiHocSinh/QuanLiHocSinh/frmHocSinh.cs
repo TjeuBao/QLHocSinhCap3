@@ -22,7 +22,7 @@ namespace QuanLiHocSinh
         {
             InitializeComponent();
             drgHocSinh.RowTemplate.Height = 35;
-            init = new Init(cbKhoaHoc, cbKhoi, cbLop, cbTinhTrang,null,null);
+            init = new Init(cbKhoaHoc, cbKhoi, cbLop, cbTinhTrang, null, null);
             init.InitCombobox();
 
             init.InitKhoa();
@@ -116,9 +116,9 @@ namespace QuanLiHocSinh
                 cbTinhTrang.Text = drgHocSinh.Rows[numrow].Cells[8].Value.ToString();
 
                 var lophientai = init.lop.First(x => x.TenLop.Contains(drgHocSinh.Rows[numrow].Cells[10].Value.ToString()));
-                init.getcbKhoaHoc(lophientai.TenKhoi, init.khoaHoc.First(x=>x.NamHoc==lophientai.IdKhoaHoc).NamHoc.ToString(), lophientai.TenLop);
+                init.getcbKhoaHoc(lophientai.TenKhoi, init.khoaHoc.First(x => x.NamHoc == lophientai.IdKhoaHoc).NamHoc.ToString(), lophientai.TenLop);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return;
             }
@@ -149,14 +149,14 @@ namespace QuanLiHocSinh
 
         private void cbKhoaHoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-           init.getcbKhoaHoc("", init.khoaHoc[cbKhoaHoc.SelectedIndex].NamHoc.ToString(), "");
+            init.getcbKhoaHoc("", init.khoaHoc[cbKhoaHoc.SelectedIndex].NamHoc.ToString(), "");
         }
 
         private void cbKhoi_SelectedIndexChanged(object sender, EventArgs e)
         {
             int cbkv = 0;
             var cbkh = "";
-            cbkh =init.khoaHoc[cbKhoaHoc.SelectedIndex].NamHoc.ToString();
+            cbkh = init.khoaHoc[cbKhoaHoc.SelectedIndex].NamHoc.ToString();
             try
             {
                 cbkv = int.Parse(cbKhoi.SelectedValue.ToString());

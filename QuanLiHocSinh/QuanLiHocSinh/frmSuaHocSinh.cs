@@ -20,12 +20,13 @@ namespace QuanLiHocSinh
         public frmSuaHocSinh(HocSinh hs)
         {
             InitializeComponent();
-            init = new Init(cbKhoaHoc, cbKhoi, cbLop, cbTinhTrang,null,null);
+            init = new Init(cbKhoaHoc, cbKhoi, cbLop, cbTinhTrang, null, null);
             init.InitCombobox();
             init.InitKhoa();
             init.InitKhoi();
             init.InitLop();
-            txtID.Text = hs.MaHS.ToString();
+
+            txtMaHS.Text = hs.MaHS.ToString();
             txtHoTen.Text = hs.HoTen.ToString();
             cbGT.Text = hs.GioiTinh.ToString();
             txtNS.Value = hs.NgaySinh;
@@ -36,18 +37,15 @@ namespace QuanLiHocSinh
             var lophientai = init.lop.First(x => x.MaLop == hs.LopHienTai);
             cbKhoaHoc.Text = init.khoaHoc.First(x => x.NamHoc == lophientai.IdKhoaHoc).NamHoc.ToString();
             init.getcbKhoi(lophientai.TenKhoi, cbKhoaHoc.Text, lophientai.TenLop);
-            //getcbKhoi(lophientai.TenKhoi, cbKhoaHoc.SelectedItem.ToString(), "");
-            //getcbLop(lophientai.TenKhoi, cbKhoaHoc.SelectedItem.ToString(), lophientai.TenLop);
+
         }
         private void btnSua_Click(object sender, EventArgs e)
         {
             int maHS;
-            string maSoHS;
             DateTime ngaySinh;
             string hoTen, gioiTinh, diaChi, sdt, email, tenLop;
             bool tinhTrang; int lopHienTai;
-            maHS = Int32.Parse(txtID.Text.ToString());
-            maSoHS = txtMaHS.Text.Trim();
+            maHS = Int32.Parse(txtMaHS.Text.ToString());
             hoTen = txtHoTen.Text.Trim();
             gioiTinh = cbGT.Text.Trim();
             sdt = txtSDT.Text.Trim();
