@@ -16,58 +16,18 @@ namespace QuanLiHocSinh
 {
     public partial class frmHocSinh : Form
     {
-        List<Lop> lop = new List<Lop>();
-        List<Khoi> khoi = new List<Khoi>();
+        Init init;
         HocSinhBUS hsbus = new HocSinhBUS();
         public frmHocSinh()
         {
             InitializeComponent();
             drgHocSinh.RowTemplate.Height = 35;
-            InitCombobox();
-            InitKhoi();
-            InitLop();
-        }
+            init = new Init(cbKhoaHoc, cbKhoi, cbLop, cbTinhTrang,null,null);
+            init.InitCombobox();
 
-        private void InitCombobox()
-        {
-            // combobox Tinh trang
-            List<UtilitiesDropdown> tinhTrangs = new List<UtilitiesDropdown>();
-            tinhTrangs.Add(new UtilitiesDropdown
-            {
-                Id = 1,
-                Value = "Đang học"
-            });
-
-            tinhTrangs.Add(new UtilitiesDropdown
-            {
-                Id = 0,
-                Value = "Thôi học"
-            });
-
-            cbTinhTrang.DataSource = tinhTrangs;
-            cbTinhTrang.ValueMember = "Id";
-            cbTinhTrang.DisplayMember = "Value";
-        }
-
-        private void InitLop()
-        {
-            LopBUS lopBUS = new LopBUS();
-            lop = lopBUS.getLop();
-            var cbl = lop.Select(x => new { Id = x.MaLop, Ten = x.TenLop }).ToList();
-            cbl.Insert(0, new { Id = 0, Ten = "Chọn lớp" });
-            cbLop.DataSource = cbl;
-            cbLop.ValueMember = "Id";
-            cbLop.DisplayMember = "Ten";
-        }
-        private void InitKhoi()
-        {
-            KhoiBUS khoiBUS = new KhoiBUS();
-            khoi = khoiBUS.GetTatCaKhoi();
-            var cbk = khoi.Select(x => new { Id = x.MaKhoi, Ten = x.TenKhoi }).ToList();
-            cbk.Insert(0, new { Id = 0, Ten = "Chọn khối" });
-            cbKhoi.DataSource = cbk;
-            cbKhoi.ValueMember = "Id";
-            cbKhoi.DisplayMember = "Ten";
+            init.InitKhoa();
+            init.InitKhoi();
+            init.InitLop();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -134,7 +94,6 @@ namespace QuanLiHocSinh
         private void frmHocSinh_Load(object sender, EventArgs e)
         {
             drgHocSinh.DataSource = hsbus.getStudents();
-            cbKhoaHoc.SelectedText = "2018";
             cbGT.SelectedText = "Chọn";
             this.drgHocSinh.Columns["TinhTrang"].Visible = false;
             this.drgHocSinh.Columns["LopHienTai"].Visible = false;
@@ -154,15 +113,12 @@ namespace QuanLiHocSinh
                 txtDiaChi.Text = drgHocSinh.Rows[numrow].Cells[4].Value.ToString();
                 txtSDT.Text = drgHocSinh.Rows[numrow].Cells[5].Value.ToString();
                 txtEmail.Text = drgHocSinh.Rows[numrow].Cells[6].Value.ToString();
-                cbLop.Text = drgHocSinh.Rows[numrow].Cells[10].Value.ToString();
                 cbTinhTrang.Text = drgHocSinh.Rows[numrow].Cells[8].Value.ToString();
 
-                //var lophientai = lop.First(x => x.MaLop == int.Parse(drgHocSinh.Rows[numrow].Cells[11].Value.ToString()));
-                //cbLop.Text = lophientai.TenLop;
-                //getcbKhoi(lophientai.TenKhoi, cbKhoaHoc.SelectedItem.ToString(), "");
-                //getcbLop(lophientai.TenKhoi, cbKhoaHoc.SelectedItem.ToString(), lophientai.TenLop);
+                var lophientai = init.lop.First(x => x.TenLop.Contains(drgHocSinh.Rows[numrow].Cells[10].Value.ToString()));
+                init.getcbKhoaHoc(lophientai.TenKhoi, init.khoaHoc.First(x=>x.NamHoc==lophientai.IdKhoaHoc).NamHoc.ToString(), lophientai.TenLop);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return;
             }
@@ -193,23 +149,14 @@ namespace QuanLiHocSinh
 
         private void cbKhoaHoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //cbLop.DataSource = lop.Where(x => x.TenKhoi.Equals(khoi.First(i => i.MaKhoi == int.Parse(cbKhoi.SelectedValue.ToString())).TenKhoi) && x.NamHoc == int.Parse(cbKhoaHoc.Items[cbKhoaHoc.SelectedIndex].ToString())).Select(x => new { Id = x.MaLop, Ten = x.TenLop }).ToList();
-            //cbLop.ValueMember = "Id";
-            //cbLop.DisplayMember = "Ten";
-            getcbKhoaHoc("", cbKhoaHoc.SelectedItem.ToString(), "");
+           init.getcbKhoaHoc("", init.khoaHoc[cbKhoaHoc.SelectedIndex].NamHoc.ToString(), "");
         }
 
         private void cbKhoi_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //cbKhoi.DataSource = lop.Where(x => x.TenKhoi.Equals(cbKhoi.SelectedText) && x.NamHoc == int.Parse(cbKhoaHoc.SelectedText.ToString())).Select(x => new { Id = x.MaLop, Ten = x.TenLop }).ToList();
-            //cbKhoi.ValueMember = "Id";
-            //cbKhoi.DisplayMember = "Ten";
             int cbkv = 0;
             var cbkh = "";
-            if (cbKhoaHoc.SelectedItem != null)
-            {
-                cbkh = cbKhoaHoc.SelectedItem.ToString();
-            }
+            cbkh =init.khoaHoc[cbKhoaHoc.SelectedIndex].NamHoc.ToString();
             try
             {
                 cbkv = int.Parse(cbKhoi.SelectedValue.ToString());
@@ -218,32 +165,7 @@ namespace QuanLiHocSinh
             {
 
             }
-            getcbKhoi(cbkv != 0 ? khoi.First(x => x.MaKhoi == cbkv).TenKhoi : "", cbkh, "");
-        }
-        private void getcbLop(string k, string n, string l)
-        {
-            var cbl = lop.Where(x => (string.IsNullOrEmpty(k) || x.TenKhoi.Equals(k)) && x.IdKhoaHoc == int.Parse(!string.IsNullOrEmpty(n) ? n : "0")).Select(x => new { Id = x.MaLop, Ten = x.TenLop }).ToList();
-            cbl.Insert(0, new { Id = 0, Ten = "Chọn lớp" });
-            cbLop.DataSource = cbl;
-            cbLop.ValueMember = "Id";
-            cbLop.DisplayMember = "Ten";
-            cbLop.Text = !string.IsNullOrEmpty(l) ? l : cbl.First().Ten;
-        }
-        private void getcbKhoi(string k, string n, string l)
-        {
-            var cbk = khoi.Where(x => (string.IsNullOrEmpty(k) || x.TenKhoi.Equals(k))).Select(x => new { Id = x.MaKhoi, Ten = x.TenKhoi }).ToList();
-            cbk.Insert(0, new { Id = 0, Ten = "Chọn khối" });
-            //cbKhoi.DataSource = cbk;
-            //cbKhoi.ValueMember = "Id";
-            //cbKhoi.DisplayMember = "Ten";
-            cbKhoi.Text = !string.IsNullOrEmpty(k) ? k : cbk.First().Ten;
-            getcbLop(k, n, l);
-        }
-        private void getcbKhoaHoc(string k, string n, string l)
-        {
-            //cbKhoaHoc.Text = n;
-            getcbKhoi(k, n, l);
-            //getcbLop(k, n, l);
+            init.getcbKhoi(cbkv != 0 ? init.khoi.First(x => x.MaKhoi == cbkv).TenKhoi : "", cbkh, "");
         }
 
         private void btnIn_Click(object sender, EventArgs e)

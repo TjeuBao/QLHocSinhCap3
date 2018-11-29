@@ -14,16 +14,16 @@ namespace QuanLiHocSinh
 {
     public partial class frmThemLop : Form
     {
+        Init init;
         KhoiBUS khoiBUS = new KhoiBUS();
         LopBUS lopBUS = new LopBUS();
         public frmThemLop()
         {
             InitializeComponent();
-            //Lấy khối 
-            var khoi = khoiBUS.GetTatCaKhoi();
-            cbKhoi.DataSource = khoi.Select(x => new { Id = x.MaKhoi, Ten = x.TenKhoi }).ToList();
-            cbKhoi.DisplayMember = "Ten";
-            cbKhoi.ValueMember = "Id";
+            init = new Init(cbKhoaHoc, cbKhoi, null, null, null, null);
+            init.InitKhoa();
+            init.InitKhoi();
+            init.lop = lopBUS.getLop();
 
         }
 
@@ -31,11 +31,19 @@ namespace QuanLiHocSinh
         {
             try
             {
+                var tenLop = txtTenLop.Text;
+                var idKhoaHoc = init.khoaHoc[cbKhoaHoc.SelectedIndex].NamHoc;
+                var maKhoi = Convert.ToInt32(cbKhoi.SelectedValue);
+                if (init.lop.Where(x => x.TenLop.Contains(tenLop) && x.TenKhoi.Contains(init.khoi.First(i=>i.MaKhoi==maKhoi).TenKhoi) && x.IdKhoaHoc == idKhoaHoc).Count() > 0)
+                {
+                    MessageBox.Show("Đã có lớp này");
+                    return;
+                }
                 Lop lop = new Lop()
                 {
-                    TenLop = txtTenLop.Text,
-                    IdKhoaHoc = Convert.ToInt32(cbKhoaHoc.SelectedValue),
-                    MaKhoi = Convert.ToInt32(cbKhoi.SelectedValue),                    
+                    TenLop = tenLop,
+                    IdKhoaHoc = idKhoaHoc,
+                    MaKhoi = maKhoi,                    
                     SiSo = 0
                 };
                 MessageBox.Show(lopBUS.ThemLop(lop));

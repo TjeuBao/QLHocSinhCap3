@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -37,6 +38,27 @@ namespace DAO
             }
 
 
+        }
+        public List<NienKhoa> GetKhoaHoc()
+        {
+            try
+            {
+                var d = myExecuteReader("SELECT * FROM KhoaHoc");
+                var list = new List<NienKhoa>();
+                while (d.Read())
+                {
+                    var khoaHoc = new NienKhoa();
+                    khoaHoc.IdKhoaHoc = d.GetInt32(0);
+                    khoaHoc.NamHoc = d.GetInt32(1);
+                    list.Add(khoaHoc);
+                }
+                return list;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

@@ -81,14 +81,6 @@
             this.cbKhoaHoc.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbKhoaHoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbKhoaHoc.FormattingEnabled = true;
-            this.cbKhoaHoc.Items.AddRange(new object[] {
-            "2014",
-            "2015",
-            "2016",
-            "2017",
-            "2018",
-            "2019",
-            "2020"});
             this.cbKhoaHoc.Location = new System.Drawing.Point(135, 135);
             this.cbKhoaHoc.Name = "cbKhoaHoc";
             this.cbKhoaHoc.Size = new System.Drawing.Size(150, 24);

@@ -137,7 +137,34 @@ namespace DAO
                 DisConnect();
             }
         }
+        public SqlDataReader ExecProcedrure(string storedprocedure_name, CommandType type, List<SqlParameter> paras)
+        {
+            Connect();
+            try
+            {
+                SqlCommand cm = new SqlCommand();
+                cm.Connection = cn;
+                cm.CommandText = storedprocedure_name;
+                cm.CommandType = type;
+                if (paras != null)
+                {
+                    foreach (SqlParameter para in paras)
+                    {
+                        cm.Parameters.Add(para);
+                    }
+                }
+                return cm.ExecuteReader();
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+            finally
+            {
+                DisConnect();
+            }
+        }
         //tra ve bang 
         public DataTable GetTable(string sql)
         {
