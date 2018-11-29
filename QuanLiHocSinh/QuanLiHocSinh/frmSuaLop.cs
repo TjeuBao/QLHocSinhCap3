@@ -14,6 +14,7 @@ namespace QuanLiHocSinh
 {
     public partial class frmSuaLop : Form
     {
+        Init init;
         LopBUS lopBUS = new LopBUS();
         KhoiBUS khoiBUS = new KhoiBUS();
         Lop lop = new Lop();
@@ -26,32 +27,38 @@ namespace QuanLiHocSinh
         {
             InitializeComponent();
             lop = l;
-            var khoi = khoiBUS.GetTatCaKhoi();
-            cbKhoi.DataSource = khoi.Select(x => new { Id = x.MaKhoi, Ten = x.TenKhoi }).ToList();
-            cbKhoi.DisplayMember = "Ten";
-            cbKhoi.ValueMember = "Id";
-            cbKhoi.SelectedText = lop.TenKhoi;
+            init = new Init(cbKhoaHoc, cbKhoi, null, null, null, null);
+            init.InitKhoa();
+            init.InitKhoi();
+            cbKhoi.Text = lop.TenKhoi;
             txtTenLop.Text = lop.TenLop;
             cbKhoaHoc.Text = lop.IdKhoaHoc.ToString();
-            cbKhoi.Text = lop.TenKhoi;
         }
         private void btSua_Click(object sender, EventArgs e)
         {
             try
             {
+                var tenLop = txtTenLop.Text;
+                var idKhoaHoc = init.khoaHoc[cbKhoaHoc.SelectedIndex].NamHoc;
+                var maKhoi = Convert.ToInt32(cbKhoi.SelectedValue);
+                if (init.lop.Where(x => x.TenLop.Contains(tenLop) && x.TenKhoi.Contains(init.khoi.First(i => i.MaKhoi == maKhoi).TenKhoi) && x.IdKhoaHoc == idKhoaHoc).Count() > 0)
+                {
+                    MessageBox.Show("Đã có lớp này");
+                    return;
+                }
                 if (lopBUS.SuaLop(new Lop()
                 {
                     MaLop = lop.MaLop,
-                    TenLop = txtTenLop.Text,
-                    IdKhoaHoc = int.Parse(cbKhoaHoc.Text),
-                    MaKhoi = int.Parse(cbKhoi.SelectedValue.ToString())
+                    TenLop = tenLop,
+                    IdKhoaHoc = init.khoaHoc[cbKhoaHoc.SelectedIndex].IdKhoaHoc,
+                    MaKhoi = maKhoi
                 })==1)
                 {
                     MessageBox.Show("Đã sửa lớp");
                     Close();
+                    return;
                 };
                 MessageBox.Show("Không sửa được lớp");
-                return;
             }
             catch (Exception) 
             {

@@ -55,7 +55,7 @@ namespace DAO
         {
             List<SqlParameter> list = new List<SqlParameter>();
             list.Add(new SqlParameter("@tenlop", lop.TenLop));
-            list.Add(new SqlParameter("@idKhoaHoc", lop.IdKhoaHoc));
+            list.Add(new SqlParameter("@idkhoahoc", lop.IdKhoaHoc));
             list.Add(new SqlParameter("@makhoi", lop.MaKhoi));
             try
             {
@@ -74,7 +74,7 @@ namespace DAO
             List<SqlParameter> list = new List<SqlParameter>();
             list.Add(new SqlParameter("@malop", lop.MaLop));
             list.Add(new SqlParameter("@tenlop", lop.TenLop));
-            list.Add(new SqlParameter("@idKhoaHoc", lop.IdKhoaHoc));
+            list.Add(new SqlParameter("@idkhoahoc", lop.IdKhoaHoc));
             list.Add(new SqlParameter("@makhoi", lop.MaKhoi));
             try
             {
