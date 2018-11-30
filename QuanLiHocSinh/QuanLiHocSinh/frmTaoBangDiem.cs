@@ -43,17 +43,14 @@ namespace QuanLiHocSinh
 
         private void cbKhoaHoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            init.getcbKhoaHoc("", cbKhoaHoc.SelectedItem.ToString(), "");
+            init.getcbKhoaHoc("", init.khoaHoc[cbKhoaHoc.SelectedIndex].NamHoc.ToString(), "");
         }
 
         private void cbKhoi_SelectedIndexChanged(object sender, EventArgs e)
         {
             int cbkv = 0;
             var cbkh = "";
-            if (cbKhoaHoc.SelectedItem != null)
-            {
-                cbkh = cbKhoaHoc.SelectedItem.ToString();
-            }
+            cbkh = init.khoaHoc[cbKhoaHoc.SelectedIndex].NamHoc.ToString();
             try
             {
                 cbkv = int.Parse(cbKhoi.SelectedValue.ToString());
@@ -72,7 +69,7 @@ namespace QuanLiHocSinh
 
         private void btnTim_Click(object sender, EventArgs e)
         {
-            var khoahoc = cbKhoaHoc.SelectedText;
+            var khoahoc = cbKhoaHoc.SelectedValue;
             var lop = cbLop.SelectedValue;
             var mon = cbMonHoc.SelectedValue;
             var hocki = cbHocKi.SelectedValue;
@@ -89,8 +86,17 @@ namespace QuanLiHocSinh
             }).ToList();
             drgNhapDiem.DataSource = diemmonhoclop;
         }
+        private void drgNhapDiem_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int numrow;
+            numrow = e.RowIndex;
+            var mahs = drgNhapDiem.Rows[numrow].Cells[0].Value.ToString();
+            var listDiem = diem.Where(x => x.MaHS == int.Parse(mahs)).ToList();
+            frmDiem frmDiem = new frmDiem(listDiem);
+            frmDiem.Show();
+        }
 
-        private void drgNhapDiem_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void drgNhapDiem_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int numrow;
             numrow = e.RowIndex;

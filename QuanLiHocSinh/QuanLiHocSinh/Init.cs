@@ -15,7 +15,7 @@ namespace QuanLiHocSinh
         public List<Lop> lop = new List<Lop>();
         public List<Khoi> khoi = new List<Khoi>();
         public List<NienKhoa> khoaHoc = new List<NienKhoa>();
-        List<MonHoc> mon = new List<MonHoc>();
+        public List<MonHoc> mon = new List<MonHoc>();
         ComboBox cbKhoaHoc;
         ComboBox cbKhoi;
         ComboBox cbLop;
@@ -103,6 +103,20 @@ namespace QuanLiHocSinh
             cbHocKi.ValueMember = "Id";
             cbHocKi.DisplayMember = "Ten";
         }
+        public List<LoaiKiemTra> InitLoaiKiemTra(ComboBox cbLoaiKiemTra)
+        {
+            var cblkt = new List<LoaiKiemTra>()
+            {
+                new LoaiKiemTra(){ Id = 1, Ten = "Điểm miệng" },
+                new LoaiKiemTra(){ Id = 2, Ten = "15 phút" },
+                new LoaiKiemTra(){ Id = 3, Ten = "1 tiết" },
+                new LoaiKiemTra(){ Id = 4, Ten = "Cuối kì" },
+            };
+            cbLoaiKiemTra.DataSource = cblkt;
+            cbLoaiKiemTra.ValueMember = "Id";
+            cbLoaiKiemTra.DisplayMember = "Ten";
+            return cblkt;
+        }
         public void getcbLop(string k, string n, string l)
         {
             var cbl = lop.Where(x => (string.IsNullOrEmpty(k) || x.TenKhoi.Contains(k)) && x.IdKhoaHoc == int.Parse(!string.IsNullOrEmpty(n) ? n : "0")).Select(x => new { Id = x.MaLop, Ten = x.TenLop }).ToList();
@@ -124,5 +138,10 @@ namespace QuanLiHocSinh
             cbKhoaHoc.Text = n;
             getcbKhoi(k, n, l);
         }
+    }
+    public class LoaiKiemTra
+    {
+        public int Id { get; set; }
+        public string Ten { get; set; }
     }
 }
