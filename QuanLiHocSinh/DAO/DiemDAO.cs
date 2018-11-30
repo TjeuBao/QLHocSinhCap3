@@ -60,5 +60,21 @@ namespace DAO
                 throw;
             }
         }
+        public int SuaDiem(Diem d)
+        {
+            var param = new List<SqlParameter>();
+            param.Add(new SqlParameter("@madiem", d.MaDiem));
+            param.Add(new SqlParameter("@madiemmon", d.MaDiemMon));
+            param.Add(new SqlParameter("@diem", d.DiemMon));
+            try
+            {
+                return ExecProcedure("dbo.SuaDiem", System.Data.CommandType.StoredProcedure, param);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

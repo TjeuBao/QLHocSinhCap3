@@ -17,6 +17,7 @@ namespace QuanLiHocSinh
         Init init;
         List<DiemMonHoc> diem = new List<DiemMonHoc>();
         DiemBUS diemBUS = new DiemBUS();
+        DiemMonHoc d = new DiemMonHoc();
         public frmDiem()
         {
             InitializeComponent();
@@ -88,13 +89,20 @@ namespace QuanLiHocSinh
             int numrow;
             numrow = e.RowIndex;
             var madiem = int.Parse(dgrDiem.Rows[numrow].Cells[0].Value.ToString());
-            var d= diem.First(x => x.MaDiem == madiem);
+            d= diem.First(x => x.MaDiem == madiem);
             if (d != null)
             {
                 txtD.Text = d.Diem.ToString();
                 var kt = init.InitLoaiKiemTra(cbLKT);
                 cbLKT.Text = kt.First(x => x.Id == d.LoaiKiemTra).Ten;
             }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            diemBUS.SuaDiem(new Diem()
+            {
+            });
         }
     }
 }
