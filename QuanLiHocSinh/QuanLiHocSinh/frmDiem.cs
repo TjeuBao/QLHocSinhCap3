@@ -16,6 +16,7 @@ namespace QuanLiHocSinh
     {
         Init init;
         List<DiemMonHoc> diem = new List<DiemMonHoc>();
+        DiemBUS diemBUS = new DiemBUS();
         public frmDiem()
         {
             InitializeComponent();
@@ -34,11 +35,11 @@ namespace QuanLiHocSinh
             txtHS.Text = d.TenHS;
             txtLop.Text = init.lop.First(x => x.MaLop == d.MaLop).TenLop;
             txtMon.Text = init.mon.First(x => x.IdMonHoc==d.MaMonHoc).TenMonHoc;
-            dgrDiem.DataSource = listDiem.Select(x=>new { LoaiKiemTra = kt.First(i=>i.Id== x.LoaiKiemTra).Ten, Diem = x.Diem }).ToList();
+            dgrDiem.DataSource = listDiem.Select(x=>new { MaDiem = x.MaDiem, LoaiKiemTra = kt.First(i=>i.Id== x.LoaiKiemTra).Ten, Diem = x.Diem }).ToList();
         }
         private void frmDiem_Load(object sender, EventArgs e)
         {
-            dgrDiem.DataSource = diem.Select(x => new { TenHS = x.TenHS, LoaiKiemTra = x.LoaiKiemTra, Diem = x.Diem }).ToList();
+            //dgrDiem.DataSource = diem.Select(x => new {MaDiem= x.MaDiem, TenHS = x.TenHS, LoaiKiemTra = x.LoaiKiemTra, Diem = x.Diem }).ToList();
         }
 
         private void dgrDiem_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -51,17 +52,49 @@ namespace QuanLiHocSinh
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            var i = getId(int.Parse(cbLoaiKiemTra.SelectedValue.ToString()));
+            if (i < 0)
+            {
+                return;
+            }
             Diem d = new Diem()
             {
                 LoaiKiemTra = int.Parse(cbLoaiKiemTra.SelectedValue.ToString()),
-                DiemMon = txtDiem.Text,
-                MaDiemMon = diem.First().MaDiemMon
+                DiemMon = Convert.ToSingle(txtDiem.Text),
+                MaDiemMon = diem.First().MaDiemMon,
+                Id = i
             };
+            diemBUS.ThemDiem(d);
+        }
+        private int getId(int loaikiemtra)
+        {
+            if(loaikiemtra==1|| loaikiemtra == 2)
+            {
+                return 1;
+            }
+            else if (loaikiemtra == 3)
+            {
+                return 2;
+            }
+            else if (loaikiemtra ==4)
+            {
+                return 3;
+            }
+            return -1;
         }
 
-        private void btnThem_Click_1(object sender, EventArgs e)
+        private void dgrDiem_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var loaikiemtra = cbLoaiKiemTra.SelectedValue;
+            int numrow;
+            numrow = e.RowIndex;
+            var madiem = int.Parse(dgrDiem.Rows[numrow].Cells[0].Value.ToString());
+            var d= diem.First(x => x.MaDiem == madiem);
+            if (d != null)
+            {
+                txtD.Text = d.Diem.ToString();
+                var kt = init.InitLoaiKiemTra(cbLKT);
+                cbLKT.Text = kt.First(x => x.Id == d.LoaiKiemTra).Ten;
+            }
         }
     }
 }

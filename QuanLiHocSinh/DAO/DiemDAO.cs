@@ -31,10 +31,28 @@ namespace DAO
                     diemmonhoc.MaHocKi = d.GetString(5);
                     diemmonhoc.LoaiKiemTra = d.GetInt32(6);
                     diemmonhoc.Diem = d.GetFloat(7);
-                    diemmonhoc.TenHS = d.GetString(8);
+                    diemmonhoc.MaDiem = d.GetInt32(8);
+                    diemmonhoc.TenHS = d.GetString(9);
                     list.Add(diemmonhoc);
                 }
                 return list;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public int ThemDiem(Diem d)
+        {
+            var param = new List<SqlParameter>();
+            param.Add(new SqlParameter("@loaikiemtra", d.LoaiKiemTra));
+            param.Add(new SqlParameter("@madiemmon",d.MaDiemMon));
+            param.Add(new SqlParameter("@diem", d.DiemMon));
+            param.Add(new SqlParameter("@id", d.Id));
+            try
+            {
+              return ExecProcedure("dbo.ThemDiem", System.Data.CommandType.StoredProcedure, param);
             }
             catch (Exception)
             {
