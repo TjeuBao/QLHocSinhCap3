@@ -35,6 +35,7 @@ namespace DAO
                     diemmonhoc.TenHS = d.GetString(9);
                     list.Add(diemmonhoc);
                 }
+                DisConnect();
                 return list;
             }
             catch (Exception)
@@ -69,6 +70,21 @@ namespace DAO
             try
             {
                 return ExecProcedure("dbo.SuaDiem", System.Data.CommandType.StoredProcedure, param);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public int XoaDiem(Diem d)
+        {
+            var param = new List<SqlParameter>();
+            param.Add(new SqlParameter("@madiem", d.MaDiem));
+            param.Add(new SqlParameter("@madiemmon", d.MaDiemMon));
+            try
+            {
+                return ExecProcedure("dbo.XoaDiem", System.Data.CommandType.StoredProcedure, param);
             }
             catch (Exception)
             {

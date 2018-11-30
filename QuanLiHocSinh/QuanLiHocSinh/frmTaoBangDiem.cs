@@ -79,9 +79,9 @@ namespace QuanLiHocSinh
                 MaHS = x.First().MaHS,
                 TenHS = x.First().TenHS,
                 DiemMieng = string.Join(",", x.Where(i => i.LoaiKiemTra == 1).Select(i => i.Diem).ToList()),
-                Tiet = string.Join(",", x.Where(i => i.LoaiKiemTra == 2).Select(i => i.Diem).ToList()),
+                Tiet = string.Join(",", x.Where(i => i.LoaiKiemTra == 3).Select(i => i.Diem).ToList()),
                 CuoiKi = string.Join(",", x.Where(i => i.LoaiKiemTra == 4).Select(i => i.Diem).ToList()),
-                Phut = string.Join(",", x.Where(i => i.LoaiKiemTra == 3).Select(i => i.Diem).ToList()),
+                Phut = string.Join(",", x.Where(i => i.LoaiKiemTra == 2).Select(i => i.Diem).ToList()),
                 DTB = x.First().DTB.ToString()
             }).ToList();
             drgNhapDiem.DataSource = diemmonhoclop;

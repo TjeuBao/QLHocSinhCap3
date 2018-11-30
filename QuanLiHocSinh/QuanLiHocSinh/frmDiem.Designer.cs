@@ -29,9 +29,14 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtD = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbLKT = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.dgrDiem = new System.Windows.Forms.DataGridView();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtDiem = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,15 +50,10 @@
             this.txtLop = new System.Windows.Forms.TextBox();
             this.txtMon = new System.Windows.Forms.TextBox();
             this.LoaiKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.cbLKT = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtD = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrDiem)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -70,15 +70,69 @@
             this.panel2.Size = new System.Drawing.Size(656, 257);
             this.panel2.TabIndex = 14;
             // 
+            // txtD
+            // 
+            this.txtD.Location = new System.Drawing.Point(473, 82);
+            this.txtD.Name = "txtD";
+            this.txtD.Size = new System.Drawing.Size(95, 20);
+            this.txtD.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(390, 80);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(54, 24);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Điểm";
+            // 
+            // cbLKT
+            // 
+            this.cbLKT.FormattingEnabled = true;
+            this.cbLKT.Location = new System.Drawing.Point(473, 36);
+            this.cbLKT.Name = "cbLKT";
+            this.cbLKT.Size = new System.Drawing.Size(121, 21);
+            this.cbLKT.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(330, 33);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(115, 24);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Loại kiểm tra";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dgrDiem);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(292, 257);
+            this.panel3.TabIndex = 7;
+            // 
             // dgrDiem
             // 
             this.dgrDiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrDiem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrDiem.Location = new System.Drawing.Point(0, 0);
             this.dgrDiem.Name = "dgrDiem";
-            this.dgrDiem.Size = new System.Drawing.Size(253, 257);
+            this.dgrDiem.Size = new System.Drawing.Size(292, 257);
             this.dgrDiem.TabIndex = 6;
             this.dgrDiem.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrDiem_CellClick);
+            // 
+            // btnSua
+            // 
+            this.btnSua.Location = new System.Drawing.Point(473, 142);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(75, 23);
+            this.btnSua.TabIndex = 12;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
@@ -88,16 +142,7 @@
             this.btnXoa.TabIndex = 13;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
-            // 
-            // btnSua
-            // 
-            this.btnSua.Location = new System.Drawing.Point(441, 148);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 23);
-            this.btnSua.TabIndex = 12;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnThem
             // 
@@ -221,50 +266,6 @@
             this.LoaiKiemTra.Name = "LoaiKiemTra";
             this.LoaiKiemTra.ReadOnly = true;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.dgrDiem);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(253, 257);
-            this.panel3.TabIndex = 7;
-            // 
-            // cbLKT
-            // 
-            this.cbLKT.FormattingEnabled = true;
-            this.cbLKT.Location = new System.Drawing.Point(441, 42);
-            this.cbLKT.Name = "cbLKT";
-            this.cbLKT.Size = new System.Drawing.Size(121, 21);
-            this.cbLKT.TabIndex = 14;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(298, 39);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(115, 24);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Loại kiểm tra";
-            // 
-            // txtD
-            // 
-            this.txtD.Location = new System.Drawing.Point(441, 88);
-            this.txtD.Name = "txtD";
-            this.txtD.Size = new System.Drawing.Size(95, 20);
-            this.txtD.TabIndex = 16;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(358, 86);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 24);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Điểm";
-            // 
             // frmDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,10 +277,10 @@
             this.Text = "frmDiem";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgrDiem)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

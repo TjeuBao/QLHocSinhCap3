@@ -47,5 +47,17 @@ namespace BUS
                 throw;
             }
         }
+        public int XoaDiem(Diem d)
+        {
+            try
+            {
+                return diemDAO.XoaDiem(d);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
