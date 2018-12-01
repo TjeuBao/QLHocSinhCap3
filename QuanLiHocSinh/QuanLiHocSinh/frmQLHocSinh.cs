@@ -35,12 +35,14 @@ namespace QuanLiHocSinh
         private void frmQLHocSinh_Load(object sender, EventArgs e)
         {
             this.Enabled = false;
-            this.Show();
+            
             frmLogin frm = new frmLogin();
             DialogResult resutl = frm.ShowDialog();
             if (resutl == DialogResult.OK)
             {
                 this.Enabled = true;
+                this.Show();
+                txtNameUser.Text = Properties.Settings.Default.userName;
             }
 
             cbKhoaHoc.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -69,16 +71,6 @@ namespace QuanLiHocSinh
             {
                 e.Cancel = true;
             }
-        }
-
-        private void đăngXuấtToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            this.Enabled = false;
-            frmLogin frm = new frmLogin();
-            Properties.Settings.Default.Reset();
-            DialogResult resutl = frm.ShowDialog();
-            if (resutl == DialogResult.OK)
-                this.Enabled = true;
         }
 
         private void hệThốngToolStripMenuItem_Click(object sender, EventArgs e)
@@ -334,6 +326,20 @@ namespace QuanLiHocSinh
                 this.dataGridView1.Columns[9].Visible = false;
                 this.dataGridView1.Columns[7].Visible = false;
 
+            }
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            frmLogin frm = new frmLogin();
+            Properties.Settings.Default.Reset();
+            DialogResult resutl = frm.ShowDialog();
+            if (resutl == DialogResult.OK)
+            {
+                this.Enabled = true;
+                Properties.Settings.Default.Save();
+                txtNameUser.Text = Properties.Settings.Default.userName;
             }
         }
     }

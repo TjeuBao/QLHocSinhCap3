@@ -638,8 +638,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>dsHocSinhTheoLop</DataSetName>
-        <Top>0.05556in</Top>
-        <Left>0.57511in</Left>
+        <Top>0.15973in</Top>
+        <Left>0.993in</Left>
         <Height>0.5in</Height>
         <Width>7.76294in</Width>
         <Style>
@@ -654,10 +654,10 @@
       <BackgroundColor>White</BackgroundColor>
     </Style>
   </Body>
-  <Width>9.00125in</Width>
+  <Width>9.81375in</Width>
   <Page>
     <PageHeader>
-      <Height>2.09251in</Height>
+      <Height>1.88072in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -680,8 +680,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>1.53in</Top>
-          <Left>2.85542in</Left>
+          <Top>1.5253in</Top>
+          <Left>3.20256in</Left>
           <Height>0.33458in</Height>
           <Width>2.76042in</Width>
           <Style>
@@ -711,8 +711,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox3</rd:DefaultName>
-          <Top>0.49875in</Top>
-          <Left>0.56123in</Left>
+          <Top>0.49405in</Top>
+          <Left>0.90837in</Left>
           <Height>0.20833in</Height>
           <Width>1.79167in</Width>
           <ZIndex>1</ZIndex>
@@ -758,8 +758,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox5</rd:DefaultName>
-          <Top>0.74875in</Top>
-          <Left>2.85542in</Left>
+          <Top>0.74405in</Top>
+          <Left>3.20256in</Left>
           <Height>0.45833in</Height>
           <Width>3.41792in</Width>
           <ZIndex>2</ZIndex>
@@ -798,8 +798,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox7</rd:DefaultName>
-          <Top>0.49875in</Top>
-          <Left>6.56125in</Left>
+          <Top>0.49405in</Top>
+          <Left>6.90839in</Left>
           <Height>0.25in</Height>
           <Width>2.03722in</Width>
           <ZIndex>3</ZIndex>
@@ -830,8 +830,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox9</rd:DefaultName>
-          <Top>1.53in</Top>
-          <Left>5.62972in</Left>
+          <Top>1.5253in</Top>
+          <Left>5.97686in</Left>
           <Height>0.33458in</Height>
           <Width>1in</Width>
           <ZIndex>4</ZIndex>
@@ -862,8 +862,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox22</rd:DefaultName>
-          <Top>0.79042in</Top>
-          <Left>0.7279in</Left>
+          <Top>0.78572in</Top>
+          <Left>1.07504in</Left>
           <Height>0.46875in</Height>
           <Width>1.39706in</Width>
           <ZIndex>5</ZIndex>
