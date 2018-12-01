@@ -23,5 +23,41 @@ namespace BUS
                 throw;
             }
         }
+        public int ThemDiem(Diem d)
+        {
+            try
+            {
+                return diemDAO.ThemDiem(d);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public int SuaDiem(Diem d)
+        {
+            try
+            {
+                return diemDAO.SuaDiem(d);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public int XoaDiem(Diem d)
+        {
+            try
+            {
+                return diemDAO.XoaDiem(d);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

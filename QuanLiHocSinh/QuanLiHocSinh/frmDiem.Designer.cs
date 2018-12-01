@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtD = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbLKT = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.dgrDiem = new System.Windows.Forms.DataGridView();
-            this.TenHS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LoaiKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Diem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtDiem = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,81 +49,114 @@
             this.txtHS = new System.Windows.Forms.TextBox();
             this.txtLop = new System.Windows.Forms.TextBox();
             this.txtMon = new System.Windows.Forms.TextBox();
+            this.LoaiKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrDiem)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.dgrDiem);
+            this.panel2.Controls.Add(this.txtD);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.cbLKT);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.btnSua);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 186);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 264);
+            this.panel2.Size = new System.Drawing.Size(656, 257);
             this.panel2.TabIndex = 14;
+            // 
+            // txtD
+            // 
+            this.txtD.Location = new System.Drawing.Point(473, 82);
+            this.txtD.Name = "txtD";
+            this.txtD.Size = new System.Drawing.Size(95, 20);
+            this.txtD.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(390, 80);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(54, 24);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Điểm";
+            // 
+            // cbLKT
+            // 
+            this.cbLKT.FormattingEnabled = true;
+            this.cbLKT.Location = new System.Drawing.Point(473, 36);
+            this.cbLKT.Name = "cbLKT";
+            this.cbLKT.Size = new System.Drawing.Size(121, 21);
+            this.cbLKT.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(330, 33);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(115, 24);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Loại kiểm tra";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dgrDiem);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(292, 257);
+            this.panel3.TabIndex = 7;
             // 
             // dgrDiem
             // 
             this.dgrDiem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgrDiem.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TenHS,
-            this.LoaiKiemTra,
-            this.Diem});
             this.dgrDiem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrDiem.Location = new System.Drawing.Point(0, 0);
             this.dgrDiem.Name = "dgrDiem";
-            this.dgrDiem.Size = new System.Drawing.Size(800, 264);
+            this.dgrDiem.Size = new System.Drawing.Size(292, 257);
             this.dgrDiem.TabIndex = 6;
-            // 
-            // TenHS
-            // 
-            this.TenHS.HeaderText = "Tên";
-            this.TenHS.Name = "TenHS";
-            this.TenHS.ReadOnly = true;
-            // 
-            // LoaiKiemTra
-            // 
-            this.LoaiKiemTra.HeaderText = "Loại Kiểm Tra";
-            this.LoaiKiemTra.Name = "LoaiKiemTra";
-            this.LoaiKiemTra.ReadOnly = true;
-            // 
-            // Diem
-            // 
-            this.Diem.HeaderText = "Điểm";
-            this.Diem.Name = "Diem";
-            this.Diem.ReadOnly = true;
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(478, 143);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa.TabIndex = 13;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
+            this.dgrDiem.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrDiem_CellClick);
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(382, 143);
+            this.btnSua.Location = new System.Drawing.Point(473, 142);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(75, 23);
             this.btnSua.TabIndex = 12;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(441, 143);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 13;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(278, 143);
+            this.btnThem.Location = new System.Drawing.Point(341, 143);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 23);
             this.btnThem.TabIndex = 11;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // txtDiem
             // 
-            this.txtDiem.Location = new System.Drawing.Point(431, 92);
+            this.txtDiem.Location = new System.Drawing.Point(441, 93);
             this.txtDiem.Name = "txtDiem";
             this.txtDiem.Size = new System.Drawing.Size(95, 20);
             this.txtDiem.TabIndex = 10;
@@ -139,7 +174,6 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnXoa);
-            this.panel1.Controls.Add(this.btnSua);
             this.panel1.Controls.Add(this.btnThem);
             this.panel1.Controls.Add(this.txtDiem);
             this.panel1.Controls.Add(this.label1);
@@ -154,14 +188,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 186);
+            this.panel1.Size = new System.Drawing.Size(656, 186);
             this.panel1.TabIndex = 13;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(348, 90);
+            this.label5.Location = new System.Drawing.Point(336, 90);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 24);
             this.label5.TabIndex = 9;
@@ -180,7 +214,7 @@
             // cbLoaiKiemTra
             // 
             this.cbLoaiKiemTra.FormattingEnabled = true;
-            this.cbLoaiKiemTra.Location = new System.Drawing.Point(198, 93);
+            this.cbLoaiKiemTra.Location = new System.Drawing.Point(181, 92);
             this.cbLoaiKiemTra.Name = "cbLoaiKiemTra";
             this.cbLoaiKiemTra.Size = new System.Drawing.Size(121, 21);
             this.cbLoaiKiemTra.TabIndex = 8;
@@ -199,11 +233,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(59, 88);
+            this.label4.Location = new System.Drawing.Point(36, 90);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 24);
+            this.label4.Size = new System.Drawing.Size(115, 24);
             this.label4.TabIndex = 7;
-            this.label4.Text = "LoaiKiemTra";
+            this.label4.Text = "Loại kiểm tra";
             // 
             // txtHS
             // 
@@ -226,16 +260,24 @@
             this.txtMon.Size = new System.Drawing.Size(95, 20);
             this.txtMon.TabIndex = 5;
             // 
+            // LoaiKiemTra
+            // 
+            this.LoaiKiemTra.HeaderText = "Loại Kiểm Tra";
+            this.LoaiKiemTra.Name = "LoaiKiemTra";
+            this.LoaiKiemTra.ReadOnly = true;
+            // 
             // frmDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(656, 443);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmDiem";
             this.Text = "frmDiem";
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgrDiem)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -247,9 +289,6 @@
 
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dgrDiem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenHS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LoaiKiemTra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Diem;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
@@ -264,5 +303,11 @@
         private System.Windows.Forms.TextBox txtHS;
         private System.Windows.Forms.TextBox txtLop;
         private System.Windows.Forms.TextBox txtMon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoaiKiemTra;
+        private System.Windows.Forms.TextBox txtD;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cbLKT;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel3;
     }
 }
