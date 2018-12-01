@@ -38,6 +38,21 @@ namespace QuanLiHocSinh
             txtLop.Text = init.lop.First(x => x.MaLop == d.MaLop).TenLop;
             txtMon.Text = init.mon.First(x => x.IdMonHoc==d.MaMonHoc).TenMonHoc;
             dgrDiem.DataSource = diem.Select(x=>new { MaDiem = x.MaDiem, LoaiKiemTra = kt.First(i=>i.Id== x.LoaiKiemTra).Ten, Diem = x.Diem }).ToList();
+            //var listDTB = diemBUS.GetDiemHK(6, 1).GroupBy(x => x.MaHS).Select(x => new DiemTrungBinhMon(){
+            //    TenHS = x.First().TenHS,
+            //    NgaySinh = x.First().NgaySinh,
+            //    GioiTinh = x.First().GioiTinh,
+            //    SinhHoc = x.First(i => i.IdMonHoc == 1).DTB.ToString(),
+            //    HoaHoc = x.First(i => i.IdMonHoc == 2).DTB.ToString(),
+            //    TiengAnh = x.First(i => i.IdMonHoc == 3).DTB.ToString(),
+            //    DiaLi = x.First(i => i.IdMonHoc == 4).DTB.ToString(),
+            //    LichSu = x.First(i => i.IdMonHoc == 5).DTB.ToString(),
+            //    NguVan = x.First(i => i.IdMonHoc == 6).DTB.ToString(),
+            //    Toan = x.First(i => i.IdMonHoc == 7).DTB.ToString(),
+            //    VatLi = x.First(i => i.IdMonHoc == 8).DTB.ToString(),
+            //    DTB = x.Sum(i => i.DTB) / x.Count()
+            //}).ToList();
+            //dgrDiem.DataSource = ConvertToDataTable(listDTB);
         }
         private void frmDiem_Load(object sender, EventArgs e)
         {
@@ -68,6 +83,10 @@ namespace QuanLiHocSinh
                 MaDiemMon = diem.First().MaDiemMon,
                 Id = idLoaiKiemTra
             };
+            if (d.DiemMon<0 && d.DiemMon > 10)
+            {
+                
+            }
             if(diemBUS.ThemDiem(d)>0)
             {
                 MessageBox.Show("Đã thêm được điểm");
@@ -76,7 +95,8 @@ namespace QuanLiHocSinh
                     Diem = d.DiemMon,
                     LoaiKiemTra = d.LoaiKiemTra
                 });
-                dgrDiem.DataSource = diem.Select(x => new{ MaDiem = x.MaDiem, LoaiKiemTra = kt.First(i => i.Id == x.LoaiKiemTra).Ten, Diem = x.Diem }).ToList();
+                var listD = diemBUS.GetDiem(d.MaDiemMon);
+                dgrDiem.DataSource = listD.Select(x => new{ MaDiem = x.MaDiem, LoaiKiemTra = kt.First(i => i.Id == x.LoaiKiemTra).Ten, Diem = x.Diem }).ToList();
                 return;
             };
             MessageBox.Show("Chưa thêm điểm");
@@ -168,6 +188,23 @@ namespace QuanLiHocSinh
                 MessageBox.Show("Đã bị lỗi");
                 return;
             }
+        }
+        public DataTable ConvertToDataTable(List<DiemTrungBinhMon> data)
+        {
+            PropertyDescriptorCollection properties =
+               TypeDescriptor.GetProperties(typeof(DiemTrungBinhMon));
+            DataTable table = new DataTable();
+            foreach (PropertyDescriptor prop in properties)
+                table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+            foreach (object item in data)
+            {
+                DataRow row = table.NewRow();
+                foreach (PropertyDescriptor prop in properties)
+                    row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+                table.Rows.Add(row);
+            }
+            return table;
+
         }
     }
 }

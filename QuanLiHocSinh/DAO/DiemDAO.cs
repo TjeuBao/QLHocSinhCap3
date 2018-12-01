@@ -44,6 +44,35 @@ namespace DAO
                 throw;
             }
         }
+        public List<DiemTrungBinh> GetDiemHK(int maLop, int mahocki)
+        {
+            var param = new List<SqlParameter>();
+            param.Add(new SqlParameter("@malop", maLop));
+            param.Add(new SqlParameter("@hocki", mahocki));
+            try
+            {
+                var d = ExecProcedrure("dbo.LayDiemHocKi", System.Data.CommandType.StoredProcedure, param);
+                var list = new List<DiemTrungBinh>();
+                while (d.Read())
+                {
+                    var diemmonhoc = new DiemTrungBinh();
+                    diemmonhoc.MaHS = d.GetInt32(0);
+                    diemmonhoc.TenHS = d.GetString(1);
+                    diemmonhoc.NgaySinh = d.GetDateTime(2);
+                    diemmonhoc.GioiTinh = d.GetString(3);
+                    diemmonhoc.IdMonHoc = d.GetInt32(4);
+                    diemmonhoc.DTB = d.GetFloat(5);
+                    list.Add(diemmonhoc);
+                }
+                DisConnect();
+                return list;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public int ThemDiem(Diem d)
         {
             var param = new List<SqlParameter>();
@@ -85,6 +114,30 @@ namespace DAO
             try
             {
                 return ExecProcedure("dbo.XoaDiem", System.Data.CommandType.StoredProcedure, param);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public List<DiemMonHoc> GetDiem(int madiemmon)
+        {
+            try
+            {
+                var d = myExecuteReader("SELECT * FROM Diem WHERE MaDiemMon="+ madiemmon.ToString());
+                var list = new List<DiemMonHoc>();
+                while (d.Read())
+                {
+                    var diemmonhoc = new DiemMonHoc();
+                    diemmonhoc.MaDiemMon = d.GetInt32(4);
+                    diemmonhoc.LoaiKiemTra = d.GetInt32(1);
+                    diemmonhoc.Diem = d.GetFloat(2);
+                    diemmonhoc.MaDiem = d.GetInt32(0);
+                    list.Add(diemmonhoc);
+                }
+                DisConnect();
+                return list;
             }
             catch (Exception)
             {

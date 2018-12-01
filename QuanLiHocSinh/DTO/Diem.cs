@@ -42,4 +42,30 @@ namespace DTO
         public string Phut { get; set; }
         public DienMonHocLop() { }
     }
+    public class DiemTrungBinh  
+    {
+        public int MaHS { get; set; }
+        public string TenHS { get; set; }
+        public DateTime NgaySinh { get; set; }
+        public string GioiTinh { get; set; }
+        public int IdMonHoc { get; set; }
+        public float DTB { get; set; }
+        public DiemTrungBinh() { }
+    }
+    public class DiemTrungBinhMon
+    {
+        public string TenHS { get; set; }
+        public DateTime NgaySinh { get; set; }
+        public string GioiTinh { get; set; }
+        public string Toan { get; set; }
+        public string SinhHoc { get; set; }
+        public string HoaHoc { get; set; }
+        public string TiengAnh { get; set; }
+        public string DiaLi { get; set; }
+        public string LichSu { get; set; }
+        public string NguVan { get; set; }
+        public string VatLi { get; set; }
+        public float DTB { get; set; }
+        public DiemTrungBinhMon() { }
+    }
 }

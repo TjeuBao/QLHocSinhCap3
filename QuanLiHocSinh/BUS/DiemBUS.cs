@@ -59,5 +59,29 @@ namespace BUS
                 throw;
             }
         }
+        public List<DiemMonHoc> GetDiem(int madiemmon)
+        {
+            try
+            {
+                return diemDAO.GetDiem(madiemmon);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public List<DiemTrungBinh> GetDiemHK(int maLop, int mahocki)
+        {
+            try
+            {
+                return diemDAO.GetDiemHK(maLop, mahocki);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
