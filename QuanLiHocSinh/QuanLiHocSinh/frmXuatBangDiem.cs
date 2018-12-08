@@ -26,6 +26,11 @@ namespace QuanLiHocSinh
             init.InitLop();
             init.InitHocKi();
             cbKhoaHoc.Text = DateTime.Now.Year.ToString();
+            cbKhoaHoc.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbKhoi.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbLop.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbHocKi.DropDownStyle = ComboBoxStyle.DropDownList;
+            
         }
 
         private void btTaoReport_Click(object sender, EventArgs e)
@@ -48,16 +53,9 @@ namespace QuanLiHocSinh
                     Toan = (x.Where(i => i.IdMonHoc == 7).Sum(j => j.DTB) / x.Where(i => i.IdMonHoc == 7).Count()).ToString(),
                     VatLi = (x.Where(i => i.IdMonHoc == 8).Sum(j => j.DTB) / x.Where(i => i.IdMonHoc == 8).Count()).ToString(),
                     DTB = x.Sum(i => i.DTB) / x.Count(),
-                    TenLop = "12A1"//cbLop.SelectedText.ToString()
+                    TenLop = cbLop.SelectedText.ToString()
                 }).ToList();
-                //diembus.GetDiemHK(int.Parse(cbLop.SelectedValue.ToString()), int.Parse(cbHocKi.SelectedValue.ToString())).GroupBy(x => x.MaHS).Select(x => new
-                //{
-                //    TenHS = x.First().TenHS,
-                //    NgaySinh = x.First().NgaySinh,
-                //    DTB = x.Sum(i => i.DTB) / x.Count(),
-                //    XepHang= (x.Sum(i => i.DTB) / x.Count())>=8? "Giỏi": (x.Sum(i => i.DTB) / x.Count())>=6.5|| (x.Sum(i => i.DTB) / x.Count())<8? "Khá" : (x.Sum(i => i.DTB) / x.Count()) >= 5 || (x.Sum(i => i.DTB) / x.Count()) < 6.5 ? "Trung Bình": "Yếu",
-                //    TenLop = "12A1"//cbLop.SelectedText.ToString()
-                //}).ToList();
+
                 DataTable dt = ConvertToDataTable(listDTB);
                 repBaoCao.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
                 repBaoCao.LocalReport.ReportPath = "DiemTongKet.rdlc";

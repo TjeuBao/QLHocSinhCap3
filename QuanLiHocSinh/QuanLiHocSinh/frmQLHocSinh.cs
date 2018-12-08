@@ -148,9 +148,9 @@ namespace QuanLiHocSinh
 
         private void làmMớToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = hsbus.getStudents();
-            this.dataGridView1.Columns["TinhTrang"].Visible = false;
-            this.dataGridView1.Columns["LopHienTai"].Visible = false;
+            //dataGridView1.DataSource = hsbus.getStudents();
+            //this.dataGridView1.Columns["TinhTrang"].Visible = false;
+            //this.dataGridView1.Columns["LopHienTai"].Visible = false;
             txtMaHS.Text = "";
             txtHoTen.Text = "";
             cbGT.Text = "";
@@ -160,13 +160,6 @@ namespace QuanLiHocSinh
             txtSDT.Text = "";
             cbLop.SelectedIndex = 0;
             cbKhoi.SelectedIndex = 0;
-        }
-
-        private void hồSơLớpHọcToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            dataGridView1.DataSource = hsbus.getStudents();
-            this.dataGridView1.Columns["TinhTrang"].Visible = false;
-            this.dataGridView1.Columns["LopHienTai"].Visible = false;
         }
 
         private void inDanhSáchLớpToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -341,6 +334,12 @@ namespace QuanLiHocSinh
                 Properties.Settings.Default.Save();
                 txtNameUser.Text = Properties.Settings.Default.userName;
             }
+        }
+
+        private void xếpLoạiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmXepLoaiHocSinh frm = new frmXepLoaiHocSinh();
+            frm.ShowDialog();
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTaoDanhSachLop));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgrDanhSachLop = new System.Windows.Forms.DataGridView();
@@ -193,7 +194,7 @@
             // 
             this.cbKhoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbKhoi.FormattingEnabled = true;
-            this.cbKhoi.Location = new System.Drawing.Point(38, 43);
+            this.cbKhoi.Location = new System.Drawing.Point(38, 34);
             this.cbKhoi.Name = "cbKhoi";
             this.cbKhoi.Size = new System.Drawing.Size(121, 24);
             this.cbKhoi.TabIndex = 0;
@@ -203,7 +204,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(63, 20);
+            this.label2.Location = new System.Drawing.Point(63, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 16);
             this.label2.TabIndex = 14;
@@ -219,7 +220,7 @@
             "2016",
             "2017",
             "2018"});
-            this.cbKhoaHoc.Location = new System.Drawing.Point(410, 43);
+            this.cbKhoaHoc.Location = new System.Drawing.Point(410, 34);
             this.cbKhoaHoc.Name = "cbKhoaHoc";
             this.cbKhoaHoc.Size = new System.Drawing.Size(121, 24);
             this.cbKhoaHoc.TabIndex = 2;
@@ -229,7 +230,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(432, 20);
+            this.label3.Location = new System.Drawing.Point(432, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 16);
             this.label3.TabIndex = 12;
@@ -261,7 +262,7 @@
             // 
             this.cbLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbLop.FormattingEnabled = true;
-            this.cbLop.Location = new System.Drawing.Point(223, 43);
+            this.cbLop.Location = new System.Drawing.Point(223, 34);
             this.cbLop.Name = "cbLop";
             this.cbLop.Size = new System.Drawing.Size(121, 24);
             this.cbLop.TabIndex = 1;
@@ -270,7 +271,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(251, 20);
+            this.label1.Location = new System.Drawing.Point(251, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 16);
             this.label1.TabIndex = 0;
@@ -283,6 +284,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(877, 494);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(893, 533);
             this.Name = "frmTaoDanhSachLop";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

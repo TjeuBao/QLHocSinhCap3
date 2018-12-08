@@ -158,6 +158,7 @@ namespace QuanLiHocSinh
         private void btnSave_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Lưu thành công");
+            dgvKhoi.DataSource = getKhoi();
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHocSinh));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnIn = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
@@ -589,6 +590,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(811, 582);
             this.Name = "frmHocSinh";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

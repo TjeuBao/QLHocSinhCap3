@@ -25,6 +25,9 @@ namespace QuanLiHocSinh
             dgrDanhSachLop.RowTemplate.Height = 35;
             InitKhoi();
             InitLop();
+            cbKhoaHoc.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbKhoi.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbLop.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         private void InitLop()
         {
@@ -109,7 +112,6 @@ namespace QuanLiHocSinh
             cbKhoaHoc.SelectedText = "2018";
             this.cbKhoi.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cbLop.DropDownStyle = ComboBoxStyle.DropDownList;
-            //this.cbKhoaHoc.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void dgrDanhSachLop_CellClick(object sender, DataGridViewCellEventArgs e)

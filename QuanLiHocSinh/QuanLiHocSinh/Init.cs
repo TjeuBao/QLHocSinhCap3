@@ -97,7 +97,6 @@ namespace QuanLiHocSinh
                 {
                     new { Id = 1, Ten = "Học kì 1" },
                     new { Id = 2, Ten = "Học kì 2" },
-                    new { Id = 3, Ten = "Học kì 3" },
                 };
             cbHocKi.DataSource = cbhk;
             cbHocKi.ValueMember = "Id";

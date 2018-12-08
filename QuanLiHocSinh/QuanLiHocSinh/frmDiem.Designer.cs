@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDiem));
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtD = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -35,6 +36,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgrDiem = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
@@ -50,9 +54,6 @@
             this.txtLop = new System.Windows.Forms.TextBox();
             this.txtMon = new System.Windows.Forms.TextBox();
             this.LoaiKiemTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrDiem)).BeginInit();
@@ -132,6 +133,27 @@
             this.dgrDiem.Size = new System.Drawing.Size(301, 193);
             this.dgrDiem.TabIndex = 6;
             this.dgrDiem.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrDiem_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "MaDiem";
+            this.Column1.HeaderText = "Mã Điểm";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 90;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.DataPropertyName = "LoaiKiemTra";
+            this.Column2.HeaderText = "Loại Kiểm Tra";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Diem";
+            this.Column3.HeaderText = "Điểm";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 60;
             // 
             // btnSua
             // 
@@ -254,6 +276,7 @@
             // 
             // txtHS
             // 
+            this.txtHS.Enabled = false;
             this.txtHS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHS.Location = new System.Drawing.Point(118, 26);
             this.txtHS.Name = "txtHS";
@@ -262,6 +285,7 @@
             // 
             // txtLop
             // 
+            this.txtLop.Enabled = false;
             this.txtLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLop.Location = new System.Drawing.Point(118, 61);
             this.txtLop.Name = "txtLop";
@@ -270,6 +294,7 @@
             // 
             // txtMon
             // 
+            this.txtMon.Enabled = false;
             this.txtMon.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMon.Location = new System.Drawing.Point(462, 61);
             this.txtMon.Name = "txtMon";
@@ -282,27 +307,6 @@
             this.LoaiKiemTra.Name = "LoaiKiemTra";
             this.LoaiKiemTra.ReadOnly = true;
             // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "MaDiem";
-            this.Column1.HeaderText = "Mã Điểm";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 90;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.DataPropertyName = "LoaiKiemTra";
-            this.Column2.HeaderText = "Loại Kiểm Tra";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "Diem";
-            this.Column3.HeaderText = "Điểm";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 60;
-            // 
             // frmDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -311,6 +315,7 @@
             this.ClientSize = new System.Drawing.Size(656, 403);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(672, 442);
             this.Name = "frmDiem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

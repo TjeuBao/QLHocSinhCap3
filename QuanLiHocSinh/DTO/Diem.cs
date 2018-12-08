@@ -66,6 +66,7 @@ namespace DTO
         public string NguVan { get; set; }
         public string VatLi { get; set; }
         public float DTB { get; set; }
+        public string TenLop { get; set; }
         public DiemTrungBinhMon() { }
     }
 }

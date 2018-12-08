@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSuaLop));
             this.btSua = new System.Windows.Forms.Button();
             this.txtTenLop = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -127,6 +128,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(351, 303);
             this.Name = "frmSuaLop";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

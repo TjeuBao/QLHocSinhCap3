@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThemMonHoc));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btThem = new System.Windows.Forms.Button();
             this.txtTenMH = new System.Windows.Forms.TextBox();
@@ -104,6 +105,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(325, 235);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(341, 274);
             this.Name = "frmThemMonHoc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

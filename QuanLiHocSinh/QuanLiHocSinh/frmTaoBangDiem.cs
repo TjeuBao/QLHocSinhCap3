@@ -35,10 +35,12 @@ namespace QuanLiHocSinh
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            cbKhoi.Text = "";
-            cbLop.Text = "";
-            cbHocKi.Text = "";
-            cbMonHoc.Text = "";
+            init = new Init(cbKhoaHoc, cbKhoi, cbLop, null, cbMonHoc, cbHocKi);
+            init.InitKhoa();
+            init.InitKhoi();
+            init.InitLop();
+            init.InitMon();
+            init.InitHocKi();
         }
 
         private void cbKhoaHoc_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,10 +71,12 @@ namespace QuanLiHocSinh
 
         private void btnTim_Click(object sender, EventArgs e)
         {
+           
             var khoahoc = cbKhoaHoc.SelectedValue;
             var lop = cbLop.SelectedValue;
             var mon = cbMonHoc.SelectedValue;
             var hocki = cbHocKi.SelectedValue;
+
             diem = diemBUS.GetDiemMonHoc(int.Parse(lop.ToString()), int.Parse(mon.ToString()), int.Parse(hocki.ToString()));
             var diemmonhoclop = diem.GroupBy(x => x.MaHS).Select(x => new
             {
@@ -94,6 +98,7 @@ namespace QuanLiHocSinh
             var listDiem = diem.Where(x => x.MaHS == int.Parse(mahs)).ToList();
             frmDiem frmDiem = new frmDiem(listDiem);
             frmDiem.ShowDialog();
+            
         }
 
         private void drgNhapDiem_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -104,6 +109,19 @@ namespace QuanLiHocSinh
             var listDiem = diem.Where(x => x.MaHS == int.Parse(mahs)).ToList();
             frmDiem frmDiem = new frmDiem(listDiem);
             frmDiem.ShowDialog();
+        }
+
+        private void frmTaoBangDiem_Load(object sender, EventArgs e)
+        {
+            cbHocKi.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbKhoaHoc.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbKhoi.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbLop.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbMonHoc.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbMonHoc.SelectedIndex = 0;
+            cbLop.SelectedValue = 0;
+            cbKhoi.SelectedValue = 0;
+            cbHocKi.SelectedValue = 1;
         }
     }
 }

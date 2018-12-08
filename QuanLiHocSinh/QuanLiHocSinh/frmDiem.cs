@@ -32,12 +32,12 @@ namespace QuanLiHocSinh
             init.mon = monBus.getMonHoc();
             diem = listDiem;
             InitializeComponent();
-             kt= init.InitLoaiKiemTra(cbLoaiKiemTra);
+            kt = init.InitLoaiKiemTra(cbLoaiKiemTra);
             var d = diem.First();
             txtHS.Text = d.TenHS;
             txtLop.Text = init.lop.First(x => x.MaLop == d.MaLop).TenLop;
-            txtMon.Text = init.mon.First(x => x.IdMonHoc==d.MaMonHoc).TenMonHoc;
-            dgrDiem.DataSource = diem.Select(x=>new { MaDiem = x.MaDiem, LoaiKiemTra = kt.First(i=>i.Id== x.LoaiKiemTra).Ten, Diem = x.Diem }).ToList();
+            txtMon.Text = init.mon.First(x => x.IdMonHoc == d.MaMonHoc).TenMonHoc;
+            dgrDiem.DataSource = diem.Select(x => new { MaDiem = x.MaDiem, LoaiKiemTra = kt.First(i => i.Id == x.LoaiKiemTra).Ten, Diem = x.Diem }).ToList();
             //var listDTB = diemBUS.GetDiemHK(6, 1).GroupBy(x => x.MaHS).Select(x => new DiemTrungBinhMon(){
             //    TenHS = x.First().TenHS,
             //    NgaySinh = x.First().NgaySinh,
@@ -71,35 +71,42 @@ namespace QuanLiHocSinh
         {
             try
             {
-            var idLoaiKiemTra = getId(int.Parse(cbLoaiKiemTra.SelectedValue.ToString()));
-            if (idLoaiKiemTra < 0)
-            {
-                return;
-            }
-            Diem d = new Diem()
-            {
-                LoaiKiemTra = int.Parse(cbLoaiKiemTra.SelectedValue.ToString()),
-                DiemMon = Convert.ToSingle(txtDiem.Text),
-                MaDiemMon = diem.First().MaDiemMon,
-                Id = idLoaiKiemTra
-            };
-            if (d.DiemMon<0 && d.DiemMon > 10)
-            {
-                
-            }
-            if(diemBUS.ThemDiem(d)>0)
-            {
-                MessageBox.Show("Đã thêm được điểm");
-                diem.Add(new DiemMonHoc()
+                ValidateInput validateip = new ValidateInput();
+                if (int.Parse(txtD.Text) < 0 || int.Parse(txtD.Text) > 10)
                 {
-                    Diem = d.DiemMon,
-                    LoaiKiemTra = d.LoaiKiemTra
-                });
-                var listD = diemBUS.GetDiem(d.MaDiemMon);
-                dgrDiem.DataSource = listD.Select(x => new{ MaDiem = x.MaDiem, LoaiKiemTra = kt.First(i => i.Id == x.LoaiKiemTra).Ten, Diem = x.Diem }).ToList();
-                return;
-            };
-            MessageBox.Show("Chưa thêm điểm");
+                    MessageBox.Show("Nhập lại");
+                    txtDiem.Text = "";
+                    return;
+                }
+                var idLoaiKiemTra = getId(int.Parse(cbLoaiKiemTra.SelectedValue.ToString()));
+                if (idLoaiKiemTra < 0)
+                {
+                    return;
+                }
+                Diem d = new Diem()
+                {
+                    LoaiKiemTra = int.Parse(cbLoaiKiemTra.SelectedValue.ToString()),
+                    DiemMon = Convert.ToSingle(txtDiem.Text),
+                    MaDiemMon = diem.First().MaDiemMon,
+                    Id = idLoaiKiemTra
+                };
+                if (d.DiemMon < 0 && d.DiemMon > 10)
+                {
+
+                }
+                if (diemBUS.ThemDiem(d) > 0)
+                {
+                    MessageBox.Show("Đã thêm được điểm");
+                    diem.Add(new DiemMonHoc()
+                    {
+                        Diem = d.DiemMon,
+                        LoaiKiemTra = d.LoaiKiemTra
+                    });
+                    var listD = diemBUS.GetDiem(d.MaDiemMon);
+                    dgrDiem.DataSource = listD.Select(x => new { MaDiem = x.MaDiem, LoaiKiemTra = kt.First(i => i.Id == x.LoaiKiemTra).Ten, Diem = x.Diem }).ToList();
+                    return;
+                };
+                MessageBox.Show("Chưa thêm điểm");
             }
             catch (Exception)
             {
@@ -108,7 +115,7 @@ namespace QuanLiHocSinh
         }
         private int getId(int loaikiemtra)
         {
-            if(loaikiemtra==1|| loaikiemtra == 2)
+            if (loaikiemtra == 1 || loaikiemtra == 2)
             {
                 return 1;
             }
@@ -116,7 +123,7 @@ namespace QuanLiHocSinh
             {
                 return 2;
             }
-            else if (loaikiemtra ==4)
+            else if (loaikiemtra == 4)
             {
                 return 3;
             }
@@ -128,7 +135,7 @@ namespace QuanLiHocSinh
             int numrow;
             numrow = e.RowIndex;
             var madiem = int.Parse(dgrDiem.Rows[numrow].Cells[0].Value.ToString());
-            d= diem.First(x => x.MaDiem == madiem);
+            d = diem.First(x => x.MaDiem == madiem);
             if (d != null)
             {
                 txtD.Text = d.Diem.ToString();
@@ -141,6 +148,13 @@ namespace QuanLiHocSinh
         {
             try
             {
+                ValidateInput validateip = new ValidateInput();
+                if (int.Parse(txtD.Text) < 0  || int.Parse(txtD.Text) > 10)
+                {
+                    MessageBox.Show("Nhập lại");
+                    txtD.Text = "";
+                    return;
+                }
                 if (diemBUS.SuaDiem(new Diem()
                 {
                     MaDiem = d.MaDiem,
@@ -149,11 +163,13 @@ namespace QuanLiHocSinh
                 }) > 0)
                 {
                     MessageBox.Show("Đã sửa điểm");
-                    diem.ForEach(x => {
-                    if (x.MaDiem == d.MaDiem)
+                    diem.ForEach(x =>
                     {
-                        x.Diem = Convert.ToSingle(txtD.Text.ToString());
-                    }});
+                        if (x.MaDiem == d.MaDiem)
+                        {
+                            x.Diem = Convert.ToSingle(txtD.Text.ToString());
+                        }
+                    });
                     dgrDiem.DataSource = diem.Select(x => new { MaDiem = x.MaDiem, LoaiKiemTra = kt.First(i => i.Id == x.LoaiKiemTra).Ten, Diem = x.Diem }).ToList();
                     return;
                 };
@@ -189,6 +205,6 @@ namespace QuanLiHocSinh
                 return;
             }
         }
-        
+
     }
 }

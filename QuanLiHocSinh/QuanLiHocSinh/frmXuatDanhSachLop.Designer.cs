@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmXuatDanhSachLop));
             this.DanhSachHocSinhTheoLopBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.HocSinhCap3DataSet1 = new QuanLiHocSinh.HocSinhCap3DataSet1();
             this.repBaoCao = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -182,6 +183,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(984, 681);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1000, 720);
             this.Name = "frmXuatDanhSachLop";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
