@@ -306,6 +306,7 @@
             // cbKhoaHoc
             // 
             this.cbKhoaHoc.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbKhoaHoc.Enabled = false;
             this.cbKhoaHoc.FormattingEnabled = true;
             this.cbKhoaHoc.Location = new System.Drawing.Point(391, 110);
             this.cbKhoaHoc.Name = "cbKhoaHoc";

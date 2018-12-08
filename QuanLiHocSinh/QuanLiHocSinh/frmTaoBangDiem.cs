@@ -93,7 +93,7 @@ namespace QuanLiHocSinh
             var mahs = drgNhapDiem.Rows[numrow].Cells[0].Value.ToString();
             var listDiem = diem.Where(x => x.MaHS == int.Parse(mahs)).ToList();
             frmDiem frmDiem = new frmDiem(listDiem);
-            frmDiem.Show();
+            frmDiem.ShowDialog();
         }
 
         private void drgNhapDiem_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -103,7 +103,7 @@ namespace QuanLiHocSinh
             var mahs = drgNhapDiem.Rows[numrow].Cells[0].Value.ToString();
             var listDiem = diem.Where(x => x.MaHS == int.Parse(mahs)).ToList();
             frmDiem frmDiem = new frmDiem(listDiem);
-            frmDiem.Show();
+            frmDiem.ShowDialog();
         }
     }
 }
