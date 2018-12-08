@@ -79,6 +79,7 @@
             this.cbKhoaHoc.Name = "cbKhoaHoc";
             this.cbKhoaHoc.Size = new System.Drawing.Size(121, 24);
             this.cbKhoaHoc.TabIndex = 3;
+            this.cbKhoaHoc.SelectedIndexChanged += new System.EventHandler(this.cbKhoaHoc_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -98,6 +99,7 @@
             this.cbKhoi.Name = "cbKhoi";
             this.cbKhoi.Size = new System.Drawing.Size(121, 24);
             this.cbKhoi.TabIndex = 3;
+            this.cbKhoi.SelectedIndexChanged += new System.EventHandler(this.cbKhoi_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -146,6 +148,7 @@
             this.cbHocKi.Name = "cbHocKi";
             this.cbHocKi.Size = new System.Drawing.Size(121, 24);
             this.cbHocKi.TabIndex = 1;
+            this.cbHocKi.SelectedIndexChanged += new System.EventHandler(this.cbHocKi_SelectedIndexChanged);
             // 
             // cbLop
             // 
@@ -155,6 +158,7 @@
             this.cbLop.Name = "cbLop";
             this.cbLop.Size = new System.Drawing.Size(121, 24);
             this.cbLop.TabIndex = 0;
+            this.cbLop.SelectedIndexChanged += new System.EventHandler(this.cbLop_SelectedIndexChanged);
             // 
             // label2
             // 

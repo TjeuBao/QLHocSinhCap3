@@ -15,40 +15,49 @@ namespace QuanLiHocSinh
 {
     public partial class frmXuatBangDiem : Form
     {
+        Init init;
         DiemBUS diembus = new DiemBUS();
         public frmXuatBangDiem()
         {
             InitializeComponent();
+            init = new Init(cbKhoaHoc, cbKhoi, cbLop, null, null, cbHocKi);
+            init.InitKhoa();
+            init.InitKhoi();
+            init.InitLop();
+            init.InitHocKi();
+            cbKhoaHoc.Text = DateTime.Now.Year.ToString();
         }
 
         private void btTaoReport_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void frmBaoCao_Load(object sender, EventArgs e)
-        {
-
             this.repBaoCao.RefreshReport();
 
             try
             {
-                var listDTB = diembus.GetDiemHK(6, 1).GroupBy(x => x.MaHS).Select(x => new DiemTrungBinhMon()
+                var listDTB = diembus.GetDiemHK(int.Parse(cbLop.SelectedValue.ToString()), int.Parse(cbHocKi.SelectedValue.ToString())).GroupBy(x => x.MaHS).Select(x => new DiemTrungBinhMon()
                 {
                     TenHS = x.First().TenHS,
                     NgaySinh = x.First().NgaySinh,
                     GioiTinh = x.First().GioiTinh,
-                    SinhHoc = x.First(i => i.IdMonHoc == 1).DTB.ToString(),
-                    HoaHoc = x.First(i => i.IdMonHoc == 2).DTB.ToString(),
-                    TiengAnh = x.First(i => i.IdMonHoc == 3).DTB.ToString(),
-                    DiaLi = x.First(i => i.IdMonHoc == 4).DTB.ToString(),
-                    LichSu = x.First(i => i.IdMonHoc == 5).DTB.ToString(),
-                    NguVan = x.First(i => i.IdMonHoc == 6).DTB.ToString(),
-                    Toan = x.First(i => i.IdMonHoc == 7).DTB.ToString(),
-                    VatLi = x.First(i => i.IdMonHoc == 8).DTB.ToString(),
+                    SinhHoc = (x.Where(i => i.IdMonHoc == 1).Sum(j => j.DTB) / x.Where(i => i.IdMonHoc == 1).Count()).ToString(),
+                    HoaHoc = (x.Where(i => i.IdMonHoc == 2).Sum(j => j.DTB) / x.Where(i => i.IdMonHoc == 2).Count()).ToString(),
+                    TiengAnh = (x.Where(i => i.IdMonHoc == 3).Sum(j => j.DTB) / x.Where(i => i.IdMonHoc == 3).Count()).ToString(),
+                    DiaLi = (x.Where(i => i.IdMonHoc == 4).Sum(j => j.DTB) / x.Where(i => i.IdMonHoc == 4).Count()).ToString(),
+                    LichSu = (x.Where(i => i.IdMonHoc == 5).Sum(j => j.DTB) / x.Where(i => i.IdMonHoc == 5).Count()).ToString(),
+                    NguVan = (x.Where(i => i.IdMonHoc == 6).Sum(j => j.DTB) / x.Where(i => i.IdMonHoc == 6).Count()).ToString(),
+                    Toan = (x.Where(i => i.IdMonHoc == 7).Sum(j => j.DTB) / x.Where(i => i.IdMonHoc == 7).Count()).ToString(),
+                    VatLi = (x.Where(i => i.IdMonHoc == 8).Sum(j => j.DTB) / x.Where(i => i.IdMonHoc == 8).Count()).ToString(),
                     DTB = x.Sum(i => i.DTB) / x.Count(),
                     TenLop = "12A1"//cbLop.SelectedText.ToString()
                 }).ToList();
+                //diembus.GetDiemHK(int.Parse(cbLop.SelectedValue.ToString()), int.Parse(cbHocKi.SelectedValue.ToString())).GroupBy(x => x.MaHS).Select(x => new
+                //{
+                //    TenHS = x.First().TenHS,
+                //    NgaySinh = x.First().NgaySinh,
+                //    DTB = x.Sum(i => i.DTB) / x.Count(),
+                //    XepHang= (x.Sum(i => i.DTB) / x.Count())>=8? "Giỏi": (x.Sum(i => i.DTB) / x.Count())>=6.5|| (x.Sum(i => i.DTB) / x.Count())<8? "Khá" : (x.Sum(i => i.DTB) / x.Count()) >= 5 || (x.Sum(i => i.DTB) / x.Count()) < 6.5 ? "Trung Bình": "Yếu",
+                //    TenLop = "12A1"//cbLop.SelectedText.ToString()
+                //}).ToList();
                 DataTable dt = ConvertToDataTable(listDTB);
                 repBaoCao.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
                 repBaoCao.LocalReport.ReportPath = "DiemTongKet.rdlc";
@@ -73,7 +82,10 @@ namespace QuanLiHocSinh
             {
                 MessageBox.Show("Chưa chọn lớp");
             }
+        }
 
+        private void frmBaoCao_Load(object sender, EventArgs e)
+        {
         }
         public DataTable ConvertToDataTable(List<DiemTrungBinhMon> data)
         {
@@ -90,6 +102,37 @@ namespace QuanLiHocSinh
                 table.Rows.Add(row);
             }
             return table;
+
+        }
+
+        private void cbKhoaHoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            init.getcbKhoaHoc("", init.khoaHoc[cbKhoaHoc.SelectedIndex].NamHoc.ToString(), "");
+        }
+
+        private void cbKhoi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int cbkv = 0;
+            var cbkh = "";
+            cbkh = init.khoaHoc[cbKhoaHoc.SelectedIndex].NamHoc.ToString();
+            try
+            {
+                cbkv = int.Parse(cbKhoi.SelectedValue.ToString());
+            }
+            catch (Exception)
+            {
+
+            }
+            init.getcbKhoi(cbkv != 0 ? init.khoi.First(x => x.MaKhoi == cbkv).TenKhoi : "", cbkh, "");
+        }
+
+        private void cbLop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbHocKi_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }
