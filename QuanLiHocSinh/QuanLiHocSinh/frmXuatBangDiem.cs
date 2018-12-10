@@ -52,7 +52,7 @@ namespace QuanLiHocSinh
                     NguVan = (x.Where(i => i.IdMonHoc == 6).Sum(j => j.DTB) / x.Where(i => i.IdMonHoc == 6).Count()).ToString(),
                     Toan = (x.Where(i => i.IdMonHoc == 7).Sum(j => j.DTB) / x.Where(i => i.IdMonHoc == 7).Count()).ToString(),
                     VatLi = (x.Where(i => i.IdMonHoc == 8).Sum(j => j.DTB) / x.Where(i => i.IdMonHoc == 8).Count()).ToString(),
-                    DTB = x.Sum(i => i.DTB) / x.Count(),
+                    DTB = (float)Math.Round(x.Sum(i => i.DTB) / x.Count(),2),
                     TenLop = cbLop.SelectedText.ToString()
                 }).ToList();
 
